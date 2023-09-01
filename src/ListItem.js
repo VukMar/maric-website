@@ -16,7 +16,6 @@ const ListItem = ({ svgSrc, text }) => {
   const handleMouseMove = (event) => {
     const tooltip = tooltipRef.current;
     if (tooltip && isHovering) {
-      const tooltipWidth = tooltip.offsetWidth;
       const tooltipHeight = tooltip.offsetHeight;
       tooltip.style.left = `${event.clientX}px`;
       tooltip.style.top = `${event.clientY - tooltipHeight}px`;

@@ -87,7 +87,7 @@ const AboutMe = () => {
 						I'm a self-taught programmer from
 					</p>
 					<a id='CityLink' href='https://www.google.com/maps/place/%D0%9D%D0%BE%D0%B2%D0%B8+%D0%A1%D0%B0%D0%B4' target='_blank' rel="noreferrer">
-						<img id='planet' src={PlanetSVG}/>
+						<img id='planet' src={PlanetSVG} alt='planet'/>
 						Novi Sad, Serbia
 					</a>
 					<p>

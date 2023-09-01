@@ -13,7 +13,7 @@ const Home = () => {
 			</div>
 		</div>
 		<p>I'm passionate about programing and i try to learn every day!!</p>
-		<p>Fell free to explore my website to learn more about me!<img src={SmileSVG}/></p>
+		<p>Fell free to explore my website to learn more about me!<img src={SmileSVG} alt='smile'/></p>
 	</div>
 );
 };

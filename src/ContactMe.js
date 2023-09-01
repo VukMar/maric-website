@@ -1,6 +1,5 @@
 // src/ContactMe.js
 import React, { useState } from 'react';
-import Popup from './popup';
 
 import './ContactMe.css';
 
@@ -86,6 +85,9 @@ const ContactMe = () => {
         <div className='contact-me'>
 			<code className='say-hello'>
 				<ol>
+					<li >
+						<span className='code-comment'>//SendContactEmail.js</span>
+					</li>
 					<li className='input-li'>
 						<span className='statement'>var</span><span className='object'> you</span> = 
 						new <span className='object'>Object</span>();

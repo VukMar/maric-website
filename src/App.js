@@ -34,22 +34,22 @@ function App(){
   	return (
     <Router>
       	<div className="app">
-			<img className='MainLogo' src={Logo}/>
+			<img className='MainLogo' src={Logo} alt='main-logo'/>
 			<nav id="nav">	
 				<Link className={selectedLink === '/' ? 'selected' : ''} onClick={() => handleClicks('/')} to="/">
-					<img className={selectedLink === '/' ? 'selected' : ''} src={HomeSVG} alt=""/>
+					<img className={selectedLink === '/' ? 'selected' : ''} src={HomeSVG} alt="nav-icon"/>
 					Home
 				</Link>
 				<Link className={selectedLink === '/AboutMe' ? 'selected' : ''} onClick={() => handleClicks('/AboutMe')} to="/AboutMe">
-					<img className={selectedLink === '/AboutMe' ? 'selected' : ''} src={AboutMeSVG} alt=""/>
+					<img className={selectedLink === '/AboutMe' ? 'selected' : ''} src={AboutMeSVG} alt="nav-icon"/>
 					About Me
 					</Link>
 				<Link className={selectedLink === '/ContactMe' ? 'selected' : ''} onClick={() => handleClicks('/ContactMe')} to="/ContactMe">
-					<img className={selectedLink === '/ContactMe' ? 'selected' : ''} src={ContactMeSVG} alt=""/>
+					<img className={selectedLink === '/ContactMe' ? 'selected' : ''} src={ContactMeSVG} alt="nav-icon"/>
 					Contact Me
 					</Link>
 				<Link className={selectedLink === '/MyProjects' ? 'selected' : ''} onClick={() => handleClicks('/MyProjects')} to="/MyProjects">
-					<img className={selectedLink === '/MyProjects' ? 'selected' : ''} src={MyProjectsSVG} alt=""/>
+					<img className={selectedLink === '/MyProjects' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
 					Projects
 				</Link>
 			</nav>
@@ -63,30 +63,30 @@ function App(){
 
 			<footer>
 				<div className='name-logo'>
-					<img className='MainLogo footer-logo' src={Logo}/>
+					<img className='MainLogo footer-logo' src={Logo} alt='logo-side-one'/>
 					<p className='footer-name'>Vuk Maric 2023<span>Ⓒ</span></p>
-					<img className='MainLogo footer-logo' src={Logo}/>
+					<img className='MainLogo footer-logo' src={Logo} alt='logo-side-two'/>
 				</div>
 				<div className='footer-links'>
 					<ul className='footer-link-list'>
 						Interesting websites:
 						<li>
-							<a className='footer-link' href='https://www.sololearn.com/' target='_blank' >
+							<a className='footer-link' href='https://www.sololearn.com/' target='_blank' rel='noreferrer' >
 								SoloLearn
 							</a>
 						</li>
 						<li>
-							<a className='footer-link' href='https://chat.openai.com/' target='_blank'>
+							<a className='footer-link' href='https://chat.openai.com/' target='_blank' rel='noreferrer'>
 								ChatGPT
 							</a>
 						</li>
 					</ul>
 					<div className='social-media-links'>
-						<a className='social-icon'>
+						<a className='social-icon' href='https://www.linkedin.com/in/vuk-maric-50367124a/' target='_blank' rel='noreferrer'>
 							<img src={likedinSVG} alt='linkedin'/>
 							Linkedin
 						</a>
-						<a className='social-icon'>
+						<a className='social-icon' href='https://github.com/VukMar' target='_blank' rel='noreferrer'>
 							<img src={GitHubSVG} alt='github'/>
 							GitHub
 						</a>

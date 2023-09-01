@@ -36,7 +36,7 @@
     font-size: 20px;
 }
 
-.say-hello li:nth-child(5){
+.say-hello li:nth-child(6){
     padding-left: 30px;
 }
 
@@ -89,6 +89,9 @@
 }
 .statement{
     color: blueviolet;
+}
+.code-comment{
+    color: rgb(3, 215, 3);
 }
 
 .run-code-btn:hover img{
