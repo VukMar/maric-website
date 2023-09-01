@@ -1,0 +1,136 @@
+/* ListItem.css */
+@import url('Animations.css');
+
+
+.tooltip {
+    position: fixed;
+    background-color: rgba(128, 128, 128, 0.683);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    pointer-events: none;
+    color: white;
+    max-width: 200px;
+}
+
+.techItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 24px;
+    transition-duration: 0.7s;
+    height: 50px;
+    background: linear-gradient(to right, aqua , purple);
+    -webkit-background-clip: text;
+}
+
+.techItem:hover{
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.techItem:hover img{
+    padding: 5px;
+    border-color: purple;
+}
+
+.techItem img{
+    margin-right: 15px;
+    width: 40px;
+    transition-duration: 0.7s;
+    border: 3px solid transparent;
+    border-bottom: none;
+    border-top: none;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .tooltip {
+        position: relative;
+        display: none;
+        background-color: rgba(128, 128, 128, 0.683);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        pointer-events: none;
+        color: white;
+        max-width: 200px;
+    }
+    
+    .techItem{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        font-size: 24px;
+        transition-duration: 0.7s;
+        height: fit-content;
+        background: linear-gradient(to right, aqua , purple);
+        -webkit-background-clip: text;
+    }
+    
+    .techItem img{
+        margin-right: 15px;
+        width: 30px;
+        transition-duration: 0.7s;
+        border: 3px solid transparent;
+        border-bottom: none;
+        border-top: none;
+        border-radius: 20px;
+        animation: iconPulse 3s linear infinite;
+        padding: 4px;
+    }
+    .techItem:hover img{
+        animation: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .tooltip {
+        position: relative;
+        display: none;
+        background-color: rgba(128, 128, 128, 0.683);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        pointer-events: none;
+        color: white;
+        max-width: 100px;
+    }
+    
+    .techItem{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        font-size: 24px;
+        transition-duration: 0.7s;
+        width: 100px;
+        height: fit-content;
+        background: linear-gradient(to right, aqua , purple);
+        -webkit-background-clip: text;
+    }
+    
+    .techItem img{
+        margin-right: 15px;
+        width: 30px;
+        transition-duration: 0.7s;
+        border: 3px solid transparent;
+        border-bottom: none;
+        border-top: none;
+        border-radius: 20px;
+        animation: iconPulse 3s linear infinite;
+        padding: 4px;
+    }
+
+    .techItem:hover img{
+        animation: none;
+    }
+}
+  

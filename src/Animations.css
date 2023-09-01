@@ -1,0 +1,66 @@
+@keyframes ColorChange{
+    from{
+        filter: hue-rotate(90deg);
+    }
+    to{
+        filter: hue-rotate(300deg);
+        opacity: 0.2;
+    }
+}
+
+@keyframes changeContent {
+    0% { content: "" }
+    8% { content: "Ma" }
+    16% { content: "Maric" }
+    32% { content: "V" }
+    40% { content: "Vu" }
+    48% { content: "Vuk" }
+    56% { content: "Vuk M" }
+    64% { content: "Vuk Ma" }
+    72% { content: "Vuk Mar" }
+    80% { content: "Vuk Mari" }
+    88% { content: "Vuk Maric" }
+    100% { content: "Vuk Maric."}
+}
+
+@keyframes iconPulse {
+    0%{
+        border-color: transparent;
+    }   
+    50%{
+        border-color: purple;
+    }
+    70%{
+        border-color: purple;
+    }
+    100%{
+        border-color: transparent;
+    }
+}
+
+@keyframes wave{
+    0%{
+        transform: rotate(0deg);
+    }   
+    10%{
+        transform: rotate(10deg);
+    }
+    20%{
+        transform: rotate(20deg);
+    }
+    30%{
+        transform: rotate(30deg);
+    }
+    40%{
+        transform: rotate(40deg);
+    }   
+    50%{
+        transform: rotate(30deg);
+    }
+    60%{
+        transform: rotate(20deg);
+    }
+    70%{
+        transform: rotate(10deg);
+    }
+}

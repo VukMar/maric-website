@@ -1,0 +1,346 @@
+@import url('Animations.css');
+
+.AboutMe{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#Avatar{
+    width: 300px;
+    clip-path: circle();
+    object-fit:scale-down;
+}
+
+.techItemList{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.TechStackTitle{
+    font-size: 25px;
+}
+
+.info{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: space-evenly;
+}
+
+.mainInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+}
+
+#CityLink{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    font-size: 30px;
+    text-decoration: none;
+    color: aqua;
+    transition-duration: 0.8s;
+    width: 400px;
+    height: 80px;
+    border-bottom: 2px solid transparent;
+}
+
+#CityLink:hover{
+    color: white;
+    font-size: 0px;
+    border-bottom: 2px solid purple;
+    border-radius: 50px;
+}
+
+#CityLink #planet{
+    width: 80px;
+    transition-duration: 1s;
+}
+
+#CityLink:hover #planet{
+    transform: rotate(360deg);
+}
+
+.mainInfo p{
+    width: 700px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.certificates-sec{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cert-pick-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px
+
+}
+.cert-pick{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    font-size: 24px;
+    height: 60px;
+}
+.lang-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    height: 100px;
+}
+.lang-buttons button{
+    font-size: 18px;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-radius: 100%;
+    border: 2px transparent solid;
+    border-top: none;
+    border-bottom: none;
+    color: aqua;
+    transition-duration: 0.4s;
+    animation: iconPulse 2s linear infinite;
+}
+.lang-buttons button:hover{
+    font-size: 18px;
+    background: none;
+    background-color: rgba(128, 0, 128, 0.5);
+    border: 2px purple solid;
+    border-top: none;
+    border-bottom: none;
+    cursor: pointer;
+}
+.lang-buttons button.selected{
+    font-size: 20px;
+    background-color: rgba(128, 0, 128, 0.5);
+    border: 2px purple solid;
+    border-top: none;
+    border-bottom: none;
+    animation: none;
+}
+
+.cert-list{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+}
+.cert-list img{
+    width: 100px;
+    border: 2px solid purple;
+    transition-duration: 1s;
+}
+.cert-list img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    border: 2px solid purple;
+    transform: translateY(10px);
+}
+.cert-list img.selected{
+    opacity: 0.8;
+    border: 2px solid purple;
+    transform: translateY(10px);
+}
+.display-cert{
+    width: 50%;
+    opacity: 1;
+    transition-duration: 0.5s;
+}
+.display-cert.error{
+    width: 10%;
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+
+    .avatarSec{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #Avatar{
+        width: 150px;
+        clip-path: circle();
+        object-fit:scale-down;
+    }
+    
+    .techItemList{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: left;
+    }
+    
+    .TechStackTitle{
+        font-size: 18px;
+    }
+    
+    .info{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items:flex-start;
+        justify-content: space-evenly;
+    }
+    
+    .mainInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: max-content;
+    }
+    
+    #CityLink{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+        font-size: 20px;
+        text-decoration: none;
+        color: aqua;
+        transition-duration: 0.8s;
+        width: 250px;
+        height: 40px;
+        border-bottom: 2px solid transparent;
+    }
+    
+    #CityLink:hover{
+        color: white;
+        font-size: 0px;
+        border-bottom: 2px solid purple;
+        border-radius: 50px;
+    }
+    
+    #CityLink #planet{
+        width: 40px;
+        transition-duration: 1s;
+    }
+    
+    #CityLink:hover #planet{
+        transform: rotate(360deg);
+    }
+    
+    .mainInfo p{
+        width: 300px;
+        font-size: 18px;
+        text-align: center;
+    }
+    .display-cert{
+        width: 50%;
+        opacity: 1;
+        transition-duration: 0.5s;
+    }
+    .display-cert.error{
+    width: 20%;
+    opacity: 1;
+}
+}
+
+@media screen and (max-width: 576px) {
+    #Avatar{
+        width: 200px;
+        clip-path: circle();
+        object-fit:scale-down;
+    }
+    
+    .techItemList{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+    
+    .TechStackTitle{
+        font-size: 16px;
+    }
+    
+    .info{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        justify-content: space-evenly;
+    }
+    
+    .mainInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: max-content;
+        width: 100%
+    }
+    
+    #CityLink{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        text-decoration: none;
+        color: aqua;
+        transition-duration: 0.8s;
+        width: 150px;
+        height: fit-content;
+        border-bottom: 2px solid purple;
+        border-radius: 40px;
+    }
+    
+    #CityLink:hover{
+        font-size: 16px;
+    }
+
+    #CityLink #planet{
+        width: 40px;
+        transition-duration: 1s;
+    }
+    
+    #CityLink:hover #planet{
+        transform: rotate(360deg);
+    }
+    
+    .mainInfo p{
+        width: 90%;
+        font-size: 14px;
+        text-align: center;
+    }
+    .display-cert{
+        width: 90%;
+        opacity: 1;
+        transition-duration: 0.5s;
+    }
+    .display-cert.error{
+        width: 20%;
+        opacity: 1;
+    }
+}

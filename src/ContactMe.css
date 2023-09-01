@@ -1,0 +1,383 @@
+@import url('Animations.css');
+
+.contact-me{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 100px;
+    width: 100%;
+}
+
+.say-hello{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;  
+    font-size: 20px;
+    padding: 20px;
+    border: 3px solid aqua;
+    border-radius: 20px;
+    background-color: rgb(52, 52, 52);
+    color: cornflowerblue;
+    width: 90%;
+}
+.say-hello li{
+    padding: 5px;
+}
+
+.input-li input{
+    background: none;
+    border: none;
+    min-width: 5px;
+    width: 5px;
+    color: darkgoldenrod;
+    font-size: 20px;
+}
+
+.say-hello li:nth-child(5){
+    padding-left: 30px;
+}
+
+.say-hello-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    width: fit-content;
+    padding: 5px;
+    margin-left: 5px;
+    transition-duration: 0.5s;
+}
+
+.run-code-btn{
+    background-color: black;
+    border: 2px solid purple;
+    border-radius: 10px;
+    display: flex;
+    width: fit-content;
+    padding: 5px;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    color: darkgoldenrod;
+}
+
+.run-code-btn:hover{
+    cursor: pointer;
+    border-radius: 20px;
+    content: 'Send email!';
+}
+
+.run-code-btn img{
+    width: 0px;
+    transition-duration: 0.5s;
+}
+
+.string{
+    color: darkgoldenrod;
+}
+.object{
+    color:cyan;
+}
+.function{
+    color:burlywood;
+}
+.statement{
+    color: blueviolet;
+}
+
+.run-code-btn:hover img{
+    width: 30px;
+    animation: wave 2s linear infinite;
+}
+
+.contact-logo{
+    width: 20%;
+    padding: 10px;
+}
+
+.contact-social{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 2px solid purple;
+    border-radius: 20px;
+}
+
+.contact-social p{
+    font-size: 1.5em;
+}
+
+.contact-social p:nth-child(3){
+    font-size: 2em;
+    border-bottom: 2px solid purple;
+    width: fit-content;
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.contact-social a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 100px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    border-bottom: 2px solid aqua;
+    border-radius: 20px;
+    color: transparent;
+    transition-duration: 0.4s;
+    margin-bottom: 10px;
+}
+
+.contact-social a:hover{
+    font-size: 18px;
+    color: purple;
+    border-bottom: 2px purple solid;
+    border-radius: 20px;
+    background-color: rgba(0, 255, 255, 0.482);
+    transform: translatey(-10px);
+    font-weight: 800;
+}
+
+.contact-social a img{
+    width: 40px;
+    padding-right: 10px;
+    transition-duration: 0.4s;
+}
+.contact-social a:hover img{
+    filter: drop-shadow(8px 0px 2px purple);
+}
+.contact-social a:hover .popup{
+    display: block;
+}
+
+@media screen and (max-width: 1200px){
+    .contact-me{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .contact-social{
+        margin-bottom: 100px;
+    }
+    .say-hello{
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .contact-me{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .say-hello{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: left;  
+        font-size: 14px;
+        padding: 10px;
+        border: 3px solid aqua;
+        border-radius: 20px;
+        background-color: rgb(52, 52, 52);
+        color: cornflowerblue;
+    }
+    .say-hello li{
+        align-self: flex-start;
+        padding: 5px;
+        color: cornflowerblue;
+    }
+    
+    .input-li input{
+        background: none;
+        border: none;
+        width: 5px;
+        color: darkgoldenrod;
+        font-size: 14px;
+    }
+    
+    .say-hello li:nth-child(5){
+        padding-left: 30px;
+    }
+    
+    .say-hello-button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        width: fit-content;
+        padding: 5px;
+        margin-left: 5px;
+        transition-duration: 0.5s;
+    }
+    
+    .run-code-btn img{
+        width: 0px;
+        transition-duration: 0.5s;
+    }
+    .contact-social{
+        margin-bottom: 50px;
+    }
+    .contact-social p{
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    .contact-social p:nth-child(3){
+        font-size: 16px;
+        border-bottom: 2px solid purple;
+        width: 250px;
+        text-align: center;
+    }
+
+    .contact-social a{
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 200px;
+        height: 60px;
+        font-size: 15px;
+        border-bottom: 2px solid aqua;
+        border-radius: 20px;
+        color: purple;
+        transition-duration: 0.4s;
+        margin-bottom: 10px;
+    }
+    
+    .contact-social a:hover{
+        font-size: 15px;
+        border-bottom: 2px purple solid;
+        transform: translateX(-10px);
+    }
+    
+    .contact-social a img{
+        width: 40px;
+        padding-right: 10px;
+        transition-duration: 0.4s;
+    }
+    .contact-social a:hover img{
+        filter: drop-shadow(8px 0px 2px purple);
+    }
+}
+
+@media screen and (max-width: 576px){
+    .contact-me{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 100px;
+    }
+    .say-hello{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: left;  
+        font-size: 12px;
+        padding: 5px;
+        border: 3px solid aqua;
+        border-radius: 20px;
+        background-color: rgb(52, 52, 52);
+        color: cornflowerblue;
+    }
+    .say-hello li{
+        align-self: flex-start;
+        padding: 5px;
+    }
+    
+    .input-li input{
+        background: none;
+        border: none;
+        width: 5px;
+        color: darkgoldenrod;
+        font-size: 12px;
+    }
+    
+    .say-hello li:nth-child(5){
+        padding-left: 30px;
+    }
+    
+    .say-hello-button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        width: fit-content;
+        padding: 5px;
+        margin-left: 5px;
+        transition-duration: 0.5s;
+    }
+    
+    .run-code-btn img{
+        width: 0px;
+        transition-duration: 0.5s;
+    }
+    .contact-social{
+        margin-bottom: 50px;
+    }
+    .contact-social p{
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    .contact-social p:nth-child(3){
+        font-size: 16px;
+        border-bottom: 2px solid purple;
+        width: 250px;
+        text-align: center;
+    }
+
+    .contact-social a{
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: baseline;
+        width: 200px;
+        height: 30px;
+        font-size: 14px;
+        border-bottom: 2px solid aqua;
+        border-radius: 20px;
+        color: purple;
+        transition-duration: 0.4s;
+        margin-bottom: 10px;
+    }
+    
+    .contact-social a:hover{
+        font-size: 14px;
+        border-bottom: 2px purple solid;
+        transform: translateX(-10px);
+    }
+    
+    .contact-social a img{
+        width: 25px;
+        padding-right: 10px;
+        transition-duration: 0.4s;
+    }
+    .contact-social a:hover img{
+        filter: drop-shadow(8px 0px 2px purple);
+    }
+
+}
