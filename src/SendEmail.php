@@ -1,8 +1,8 @@
 <?php
 // Define SMTP server settings
-$smtpHost = '"mai.vukmaric.rs"';
-$smtpUsername = 'vuk-maric@gmail.com';
-$smtpPassword = 'CripplePros100%';
+$smtpHost = '""';
+$smtpUsername = '';
+$smtpPassword = '';
 $smtpPort = 465; // Update with the appropriate port number for your SMTP server
 
 // Retrieve form data
