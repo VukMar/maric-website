@@ -12,8 +12,11 @@ const Home = () => {
 			<div className='name'>
 			</div>
 		</div>
-		<p>I'm passionate about programing and i try to learn every day!!</p>
-		<p>Fell free to explore my website to learn more about me!<img src={SmileSVG} alt='smile'/></p>
+		<p>I'm passionate about programming, and I strive to learn something new every day!</p>
+		<p>I invite you to explore my website to learn more about my journey in the world of programming.</p>
+		<p>Discover my latest projects, visit my <a className='link-span' target='_blank' href='https://github.com/VukMar' rel='noreferrer'>GitHub</a>, and get a glimpse into my coding adventures.</p>
+
+		<p>Ready to dive in? Just click on one of the links in navigation menu to start exploring!<img src={SmileSVG} alt='smile'/></p>
 	</div>
 );
 };

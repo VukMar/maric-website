@@ -95,10 +95,12 @@ const ContactMe = () => {
 					<li className='input-li'>
 						<span className='object'>you</span>.<span className='function'>name</span> = <span className='string'>'
 						<input onChange={getName} type='text' ></input>'</span>;
+						<span className='code-comment'>//Enter your name</span>
 					</li>
 					<li className='input-li'>
 						<span className='object'>you</span>.<span className='function'>email</span> = <span className='string'>'
 						<input onChange={getEmail} type='email'></input>'</span>;
+						<span className='code-comment'>//Enter your email</span>
 					</li>
 					<li>
 						<span className='statement'>if</span>(!<span className='object'>you</span>.<span className='function'>shy</span>()){'{'}
