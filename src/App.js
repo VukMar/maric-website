@@ -7,12 +7,14 @@ import './App.css';
 import Home from './Home';
 import AboutMe from './AboutMe';
 import ContactMe from './ContactMe';
-import MyProjects from './MyProjects';
+import Blog from './Blog';
+import BlogTopic from './BlogTopic';
+import TopicPage from './BlogTopicPage';
 
 import HomeSVG from './Home.svg';
 import AboutMeSVG from './AboutMe.svg';
 import ContactMeSVG from './ContactMe.svg';
-import MyProjectsSVG from './MyProjects.svg';
+import MyProjectsSVG from './Blog.svg';
 
 import likedinSVG from './SocialSVGs/linkedin.svg';
 import GitHubSVG from './SocialSVGs/GitHub.svg';
@@ -21,15 +23,45 @@ import Logo from './Resources/MaricLogo.png'
 
 function App(){
   
-  	const [selectedLink, setSelectedLink] = useState(null);
+  	const [selectedLink, setSelectedLink] = React.useState(null);
+	const [TopicList, setTopicList] = React.useState([]);
+
 
 	useEffect(() => {
 		setSelectedLink(window.location.pathname);
+		fetchTopics();
 	}, []);
 
   	const handleClicks = (link) =>{
 		setSelectedLink(link);
   	}
+
+	const topicRoutes = TopicList.map((topic, index) =>{
+		<Route
+		key={index}
+		path={topic.title}
+		element={<TopicPage topic={topic}/>}
+		/>
+	})
+
+
+	function fetchTopics(){
+		fetch('C:/web dev/maric-website-backend/api/blog/GetBlogTopics.php')
+		.then(response => {
+			if(response.ok){
+				return response.json();
+			}else{
+				throw new Error('Network response not ok!');
+			}
+		})
+		.then(data => {
+			setTopicList(data.topics);
+		})
+		.catch(error => {
+			console.error('There was a problem with the fetch operation:', error);
+		});
+	}
+
 
   	return (
     <Router>
@@ -48,9 +80,9 @@ function App(){
 					<img className={selectedLink === '/ContactMe' ? 'selected' : ''} src={ContactMeSVG} alt="nav-icon"/>
 					Contact Me
 					</Link>
-				<Link className={selectedLink === '/MyProjects' ? 'selected' : ''} onClick={() => handleClicks('/MyProjects')} to="/MyProjects">
-					<img className={selectedLink === '/MyProjects' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
-					Projects
+				<Link className={selectedLink === '/Blog' ? 'selected' : ''} onClick={() => handleClicks('/Blog')} to="/Blog">
+					<img className={selectedLink === '/Blog' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
+					Blog
 				</Link>
 			</nav>
 
@@ -58,7 +90,8 @@ function App(){
 				<Route path="/" element={<Home/>} />
 				<Route path="/AboutMe" element={<AboutMe />} />
 				<Route path="/ContactMe" element={<ContactMe />} />
-				<Route path="/MyProjects" element={<MyProjects />} />
+				<Route path="/Blog" element={<Blog  topicList={TopicList}/>}/>
+				{topicRoutes}
 			</Routes>
 
 			<footer>

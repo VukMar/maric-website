@@ -17,6 +17,7 @@ const Home = () => {
 		<p>Discover my latest projects, visit my <a className='link-span' target='_blank' href='https://github.com/VukMar' rel='noreferrer'>GitHub</a>, and get a glimpse into my coding adventures.</p>
 
 		<p>Ready to dive in? Just click on one of the links in navigation menu to start exploring!<img src={SmileSVG} alt='smile'/></p>
+		<div className='end-page'></div>
 	</div>
 );
 };

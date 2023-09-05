@@ -119,10 +119,10 @@ const AboutMe = () => {
 						certificateImages.map((imageUrl, index) => (
 							<img className={SelectedImage === 'http://backend.vukmaric.rs/' + imageUrl ? 'selected' : '' } onClick={() => selectImage('http://backend.vukmaric.rs/' + imageUrl)} key={index} src={'http://backend.vukmaric.rs/'+imageUrl} alt={`${value} Certificate ${index + 1}`} />
 							))
-							) : (
+						) : (
 								<p>No certificates found for {value}.</p>
-							)
-						}
+						)
+					}
 				</div>
 			</div>
 		</div>
