@@ -1,3 +1,4 @@
-.projects{
-    color:aqua;
+.blog-topics{
+    display: grid;
+    gap: 10px;
 }

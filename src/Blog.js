@@ -9,7 +9,7 @@ const Blog = ({topicList}) => {
 			<div className="blog-topics">
 				{topicList.length > 0 ? (
 						topicList.map((topic, index) => (
-							<BlogTopic cover={topic.coverURL} title={topic.title} date={topic.date} smallDesc={topic.smallDesc}/>
+							<BlogTopic key={index} id={index} cover={topic.cover} title={topic.title} date={topic.date} smallDesc={topic.shortdesc}/>
 							))
 						) : (
 								<p>Comming Soon</p>

@@ -1,0 +1,29 @@
+.blog-topic{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-decoration: none;
+    color: aqua;
+    height: 250px;
+    width: max-content;
+}
+
+.cover{
+    height: 250px;
+    object-fit: contain;
+    position: absolute;
+    z-index: 0;
+}
+
+.text-container{
+    z-index: 1;
+    width: 100%;
+    background: linear-gradient(to top, purple, transparent);
+    width: fit-content;
+}
+
+.text-container p{
+    font-size: 14px;
+    padding-left: 10px;
+    text-align: left;
+}

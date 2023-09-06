@@ -55,7 +55,7 @@ const ContactMe = () => {
 		data.append('email', Email);
 
 		try {
-			const response = await fetch('http://backend.vukmaric.rs/SendEmail.php', {
+			const response = await fetch('http://backend.vukmaric.rs/api/email/SendEmail.php', {
 			method: 'POST',
 			body: data,
 			});

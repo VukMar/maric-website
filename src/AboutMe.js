@@ -7,7 +7,6 @@ import './AboutMe.css';
 import ListItem from './ListItem';
 
 import PlanetSVG from './Planet.svg';
-import Avatar from './Resources/Avatar.jpg';
 import MaricLogo from './Resources/MaricLogo.png';
 import htmlSVG from './LangSVGs/html.svg';
 import cssSVG from './LangSVGs/css.svg';
@@ -16,6 +15,9 @@ import nodeJsSVG from './LangSVGs/nodeJs.svg';
 import reactSVG from './LangSVGs/react.svg';
 import phpSVG from './LangSVGs/php.svg';
 import cppSVG from './LangSVGs/cpp.svg';
+
+import RightArrow from './Resources/rightArrow.svg';
+import LeftArrow from './Resources/leftArrow.svg';
 
 const AboutMe = () => {
 
@@ -28,11 +30,13 @@ const AboutMe = () => {
 		{ id: 6, svgSrc: phpSVG, text: 'PhP' },
 		{ id: 7, svgSrc: cppSVG, text: 'C++' },
 	  ];
-
+	
+	const backend = 'http://backend.vukmaric.rs/api/certificates/'
 
 	const [value, setValue] = React.useState(null);
 	const [certificateImages, setCertificateImages] = React.useState([]);
 	const [SelectedImage, setSelectedImage] = React.useState(null);
+	const [selectedIndex, setSelectedIndex] = React.useState(0);
 	
 	useEffect(() =>{
 		certChange('HTML');
@@ -46,12 +50,11 @@ const AboutMe = () => {
 		const selectedValue = lang;
 		setValue(selectedValue);
 		fetchCertificates(selectedValue);
-		setSelectedImage(null);
 	}
 	
 	const fetchCertificates = (language) =>
 	{
-		fetch('http://backend.vukmaric.rs/get-certificates.php', {
+		fetch(`${backend + 'get-certificates.php'}`, {
 			method: 'POST',
 			headers: {
 			  	'Content-Type': 'application/x-www-form-urlencoded',
@@ -61,6 +64,8 @@ const AboutMe = () => {
 		.then((response) => response.json())
 		.then((data) => {
 		  	setCertificateImages(data);
+			setSelectedIndex(0);
+			setSelectedImage(backend + data[selectedIndex]);
 		})
 		.catch((error) => {
 		  	console.error('Error fetching certificates:', error);
@@ -68,19 +73,33 @@ const AboutMe = () => {
 		});
 	};
 
-
+	const switchImage = ( right ) => {
+		let index = selectedIndex;
+		if(right === true){
+			index++;
+			if(index >= certificateImages.length)
+				index--;
+		}else{
+			index--;
+			if(index < 0)
+				index = 0;
+		}
+		setSelectedIndex(index);
+		setSelectedImage(`${backend}${certificateImages[index]}`);
+	};
 
 	return (
 		<div className='AboutMe'>
 			<div className='info'>
 				<div className='avatarSec'>
-					<img id='Avatar' src={Avatar} alt='avatar'/>
+					<img id='Avatar' src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
 					<p className='TechStackTitle'>Technologies i use:</p>
 					<div className='techItemList'>
 						{listItemData.map((item) => (
           					<ListItem key={item.id} svgSrc={item.svgSrc} text={item.text} />
         				))}
 					</div>
+					<img className='stats' src='https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=VukMar&theme=dark' alt='stats-github'></img>
 				</div>
 				<div className='mainInfo'>
 					<p>
@@ -113,11 +132,19 @@ const AboutMe = () => {
 					<button className={value === 'JavaScript' ? 'selected' : ''} onClick={()=>certChange('JavaScript')}>JavaScript</button>
 					<button className={value === 'CPP' ? 'selected' : ''} onClick={()=>certChange('CPP')}>CPP</button>
 				</div>
-				<img className={SelectedImage === null ? 'display-cert error' : 'display-cert'} src={SelectedImage === null ? MaricLogo : SelectedImage} alt='diplay certificate'></img>
+				<div className='certificates-display'>
+					<button className={certificateImages.length <= 1? 'hidden' : 'left'} onClick={() => switchImage(false)}>
+						<img src={LeftArrow} alt='arrow'></img>
+					</button>
+					<img className={SelectedImage === null ? 'display-cert error' : 'display-cert'} src={SelectedImage === null ? MaricLogo : SelectedImage} alt='diplay certificate'></img>
+					<button className={certificateImages.length <= 1? 'hidden' :'right'} onClick={() => switchImage(true)}>
+						<img src={RightArrow} alt='arrow'></img>
+					</button>
+				</div>
 				<div className='cert-list'>
 					{certificateImages.length > 0 ? (
 						certificateImages.map((imageUrl, index) => (
-							<img className={SelectedImage === 'http://backend.vukmaric.rs/' + imageUrl ? 'selected' : '' } onClick={() => selectImage('http://backend.vukmaric.rs/' + imageUrl)} key={index} src={'http://backend.vukmaric.rs/'+imageUrl} alt={`${value} Certificate ${index + 1}`} />
+							<img className={SelectedImage === backend + imageUrl ? 'selected' : '' } onClick={() => selectImage(backend + imageUrl)} key={index} src={backend+imageUrl} alt={`${value} Certificate ${index + 1}`} />
 							))
 						) : (
 								<p>No certificates found for {value}.</p>

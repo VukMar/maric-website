@@ -46,6 +46,16 @@
     border-radius: 20px;
 }
 
+@media screen and (min-width: 769px) and (max-width: 1450px){
+    .tooltip{
+        font-size: 12px;
+    }
+
+    .techItem img{
+        width: 30px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .tooltip {
         position: relative;

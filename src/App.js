@@ -8,7 +8,6 @@ import Home from './Home';
 import AboutMe from './AboutMe';
 import ContactMe from './ContactMe';
 import Blog from './Blog';
-import BlogTopic from './BlogTopic';
 import TopicPage from './BlogTopicPage';
 
 import HomeSVG from './Home.svg';
@@ -37,16 +36,18 @@ function App(){
   	}
 
 	const topicRoutes = TopicList.map((topic, index) =>{
-		<Route
-		key={index}
-		path={topic.title}
-		element={<TopicPage topic={topic}/>}
-		/>
+		return (
+			<Route
+			key={index}
+			path={`Blog/${topic.title}`}
+			element={<TopicPage topic={topic}/>}
+			/>
+		)
 	})
 
 
 	function fetchTopics(){
-		fetch('C:/web dev/maric-website-backend/api/blog/GetBlogTopics.php')
+		fetch('http://backend.vukmaric.rs/api/blog/GetBlogTopics.php')
 		.then(response => {
 			if(response.ok){
 				return response.json();
@@ -111,6 +112,11 @@ function App(){
 						<li>
 							<a className='footer-link' href='https://chat.openai.com/' target='_blank' rel='noreferrer'>
 								ChatGPT
+							</a>
+						</li>
+						<li>
+							<a className='footer-link' href='https://www.codewars.com/users/VukMar' target='_blank' rel='noreferrer'>
+								CodeWars
 							</a>
 						</li>
 					</ul>
