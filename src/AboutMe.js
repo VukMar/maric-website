@@ -31,7 +31,7 @@ const AboutMe = () => {
 		{ id: 7, svgSrc: cppSVG, text: 'C++' },
 	  ];
 	
-	const backend = 'http://backend.vukmaric.rs/api/certificates/'
+	const backend = 'https://backend.vukmaric.rs/api/certificates/'
 
 	const [value, setValue] = React.useState(null);
 	const [certificateImages, setCertificateImages] = React.useState([]);

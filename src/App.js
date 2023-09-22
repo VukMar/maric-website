@@ -47,7 +47,7 @@ function App(){
 
 
 	function fetchTopics(){
-		fetch('http://backend.vukmaric.rs/api/blog/GetBlogTopics.php')
+		fetch('https://backend.vukmaric.rs/api/blog/GetBlogTopics.php')
 		.then(response => {
 			if(response.ok){
 				return response.json();
