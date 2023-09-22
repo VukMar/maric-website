@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+
+.blog-topic-page{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background: url("Resources/HomeBackground.jpg");
+    border-radius: 20px;
+    border: 2px purple solid;
+    margin-bottom: 20px;
+}
+
+.blog-topic-title{
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(128, 0, 128, 0.5);
+    border-top-right-radius: 20px ;
+    border-top-left-radius: 20px ;
+}
+
+.blog-topic-title-text{
+    position: relative;
+    top: 0px;
+    z-index: 1;
+    padding-left: 10px;
+    text-shadow: 3px 3px 2px black;
+}
+
+.page-cover{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-topic-section{
+    width: 80%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.blog-topic-section li{
+    margin-left: 15px;
+}
+.blog-topic-section h2{
+    padding-bottom: 5px;
+    border-bottom: 5px solid rgba(128, 0, 128, 0.6);
+}
+.paragraph{
+    font-size: 20px;
+}
+.code{
+    font-family: 'Source Code Pro', monospace;
+    color:#eee;
+    background-color: rgba(34, 34, 34, 0.8);
+    width: fit-content;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 100%;
+    overflow-y: auto;
+    scrollbar-width:thin;
+    scrollbar-color: #888 #eee;
+}
+.code::-webkit-scrollbar {
+    height: 4px; /* Adjust the scrollbar width as needed */
+    border-radius: 4px;
+}
+
+.code::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px;
+}
+
+.code::-webkit-scrollbar-thumb:hover {
+    background-color: #eee; /* Color of the scrollbar thumb on hover */
+}
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .blog-topic-title-text h1{
+        font-size: 28px;
+    }
+    .blog-topic-title-text h2{
+        font-size: 24px;
+    }
+    .blog-topic-title-text h3{
+        font-size: 20px;
+    }
+    .blog-topic-section h2{
+        font-size: 22px;
+    }
+    .paragraph{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+    .blog-topic-title-text h1{
+        font-size: 22px;
+    }
+    .blog-topic-title-text h2{
+        font-size: 20px;
+    }
+    .blog-topic-title-text h3{
+        font-size: 18px;
+    }
+    .blog-topic-section h2{
+        font-size: 20px;
+    }
+    .paragraph{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 699px) {
+    .blog-topic-title-text h1{
+        font-size: 18px;
+    }
+    .blog-topic-title-text h2{
+        font-size: 16px;
+    }
+    .blog-topic-title-text h3{
+        font-size: 14px;
+    }
+    .blog-topic-section h2{
+        font-size: 16px;
+    }
+    .paragraph{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 299px) {
+    .blog-topic-title-text h1{
+        font-size: 16px;
+    }
+    .blog-topic-title-text h2{
+        font-size: 14px;
+    }
+    .blog-topic-title-text h3{
+        font-size: 14px;
+    }
+    .blog-topic-section h2{
+        font-size: 14px;
+    }
+    .paragraph{
+        font-size: 12px;
+    }
+}

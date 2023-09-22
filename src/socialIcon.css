@@ -1,0 +1,29 @@
+.contact-social-icon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    text-align: center;
+    text-decoration: none;
+    color: purple;
+    height: max-content;
+    padding: 5px;
+    font-size: 14px;
+    border-bottom: 2px solid purple;
+    border-radius: 30px;
+    transition-duration: 0.7s;
+}
+
+.contact-social-icon img{
+    width: 50px;
+    opacity: 1;
+    transition-duration: inherit;
+}
+
+.contact-social-icon:hover{
+    color: white;
+}
+.contact-social-icon:hover img{
+    opacity: 0.5;
+}

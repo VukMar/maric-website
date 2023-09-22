@@ -1,4 +1,120 @@
+.blog{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.blog h1{
+    margin-left: 40px;
+    font-weight: bold;
+    justify-self: left;
+    width: max-content;
+    text-align: center;
+    text-wrap: wrap;
+}
 .blog-topics{
-    display: grid;
-    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.search-bar-section{
+    width: 80%;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+.search-bar{
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    background-color: #404040;
+    color: white;
+    border:azure 2px solid;
+    border-radius: 10px;
+}
+.keyword-container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    gap:5px;
+    padding: 6px;
+    flex-wrap: wrap;
+}
+
+.keyword-container button{
+    font-size: 16px;
+    padding: 6px;
+    border: purple 2px solid;
+    background-color: #404040;
+    border-radius: 10px;
+    color: white;
+    text-shadow: 1px 0px purple;
+    transition-duration: 0.3s;
+}
+.keyword-container button:hover{
+    cursor: pointer;
+    color: purple;
+    text-shadow: none;
+    border-color: white;
+}
+.keyword-container button.selected{
+    cursor: pointer;
+    color: purple;
+    text-shadow: none;
+    border-color: white;
+}
+.keyword-container p{
+    padding: 5px;
+    border-bottom: purple 2px solid;
+}
+
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .blog h1{
+        margin-left: 40px;
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+    .search-bar-section{
+        margin-left: 10px;
+    }
+    .blog h1{
+        margin-left: 10px;
+        font-size: 24px;
+    }
+    .keyword-container button{
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 699px) {
+    .search-bar-section{
+        margin-left: 5px;
+    }
+    .blog h1{
+        margin-left: 5px;
+        font-size: 22px;
+    }
+    .keyword-container button{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 299px) {
+    .search-bar-section{
+        margin-left: 0px;
+    }
+    .blog h1{
+        margin-left: 0px;
+        font-size: 16px;
+    }
+    .keyword-container button{
+        font-size: 14px;
+    }
 }

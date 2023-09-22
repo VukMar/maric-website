@@ -12,6 +12,7 @@ const Home = () => {
 			<div className='name'>
 			</div>
 		</div>
+		<img src='https://ychef.files.bbci.co.uk/1920x640/p0brm495.jpg' className='home-img'></img>
 		<p>I'm passionate about programming, and I strive to learn something new every day!</p>
 		<p>I invite you to explore my website to learn more about my journey in the world of programming.</p>
 		<p>Discover my latest projects, visit my <a className='link-span' target='_blank' href='https://github.com/VukMar' rel='noreferrer'>GitHub</a>, and get a glimpse into my coding adventures.</p>

@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# buidling templates
+/building_resources
+
 # testing
 /coverage
 
