@@ -1,4 +1,4 @@
-# My Personal Website v2.0.0
+# My Personal Website v2.1.2
 
 Welcome to my personal website repository! This website is built with React.js for the front end and uses a PHP backend to handle server-side functionality.
 
