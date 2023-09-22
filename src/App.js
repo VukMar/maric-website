@@ -29,7 +29,7 @@ function App(){
 	useEffect(() => {
 		setSelectedLink(window.location.pathname);
 		fetchTopics();
-	}, []);
+	}, [] );
 
   	const handleClicks = (link) =>{
 		setSelectedLink(link);
@@ -56,7 +56,7 @@ function App(){
 			}
 		})
 		.then(data => {
-			setTopicList(data.topics);
+			setTopicList(data);
 		})
 		.catch(error => {
 			console.error('There was a problem with the fetch operation:', error);

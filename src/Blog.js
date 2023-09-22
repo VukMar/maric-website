@@ -28,8 +28,6 @@ const Blog = ({topicList}) => {
 					keywords.push(keyword);
 			});
 		})
-		
-		console.log(keywords);
 		setKeywords(keywords);
 	}
 

@@ -75,9 +75,9 @@ const ContactMe = () => {
 			<div className='say-hello'>
 				<div className='input-fields'>
 					<label htmlFor='name'>Name</label>
-					<input id='Name' onChange={getName} type='text' ></input>
+					<input autoComplete='off' id='name' onInput={getName} type='text' ></input>
 					<label htmlFor='email'>Email</label>
-					<input id='email' onChange={getEmail} type='email'></input>
+					<input id='email' onInput={getEmail}  type='email' autoComplete='off'></input>
 					<button onClick={sendEmail} className='run-code-btn' disabled={!isButtonEnabled}>
 						Say Hello
 						<img src={HandwaveSVG} alt='Hand-wave'/>
