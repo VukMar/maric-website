@@ -65,7 +65,7 @@ const AboutMe = () => {
 		.then((data) => {
 		  	setCertificateImages(data);
 			setSelectedIndex(0);
-			setSelectedImage(backend + data[selectedIndex]);
+			setSelectedImage(backend + data[0]);
 		})
 		.catch((error) => {
 		  	console.error('Error fetching certificates:', error);
