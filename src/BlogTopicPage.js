@@ -42,6 +42,12 @@ function TopicPage( {topic} ){
                                         ) : null}</li>
                                 ))}
                             </ol>
+                        ) : paragraph.type === "link"?  (
+                            <a href={paragraph.content.href}>
+                                {paragraph.content.text}
+                            </a>
+                        ) : paragraph.type === "image"? (
+                            <img src={paragraph.content} alt="paragraph-image"></img>
                         ) : null)
                     )}
                     
