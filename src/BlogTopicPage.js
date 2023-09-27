@@ -43,7 +43,7 @@ function TopicPage( {topic} ){
                                 ))}
                             </ol>
                         ) : paragraph.type === "link"?  (
-                            <a href={paragraph.content.href}>
+                            <a className="blog-link" href={paragraph.content.href} target="_blank" rel="noreferrer">
                                 {paragraph.content.text}
                             </a>
                         ) : paragraph.type === "image"? (

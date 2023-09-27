@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
 
 .blog-topic-page{
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -35,7 +35,7 @@
 }
 
 .blog-topic-section{
-    width: 80%;
+    width: 90%;
     padding-left: 10px;
     padding-bottom: 10px;
 }
@@ -61,6 +61,7 @@
     overflow-y: auto;
     scrollbar-width:thin;
     scrollbar-color: #888 #eee;
+    font-size: 14px;
 }
 .code::-webkit-scrollbar {
     height: 4px; /* Adjust the scrollbar width as needed */
@@ -71,9 +72,17 @@
     background-color: #888; /* Color of the scrollbar thumb */
     border-radius: 10px;
 }
-
 .code::-webkit-scrollbar-thumb:hover {
     background-color: #eee; /* Color of the scrollbar thumb on hover */
+}
+.blog-link{
+    text-decoration: none;
+    border-bottom: purple 2px solid;
+    color: white;
+    transition-duration: 0.6s;
+}
+.blog-link:hover{
+    color:aqua;
 }
 @media (min-width: 1025px) and (max-width: 1400px) {
     .blog-topic-title-text h1{
@@ -106,6 +115,9 @@
     .blog-topic-section h2{
         font-size: 20px;
     }
+    .blog-topic-section{
+        width: 80%;
+    }
     .paragraph{
         font-size: 16px;
     }
@@ -124,6 +136,9 @@
     .blog-topic-section h2{
         font-size: 16px;
     }
+    .blog-topic-section{
+        width: 80%;
+    }   
     .paragraph{
         font-size: 14px;
     }
