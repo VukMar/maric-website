@@ -47,7 +47,9 @@ function TopicPage( {topic} ){
                                 {paragraph.content.text}
                             </a>
                         ) : paragraph.type === "image"? (
-                            <img src={paragraph.content} alt="paragraph-image"></img>
+                            <a className="paragraph-image" href={paragraph.content}>
+                                <img src={paragraph.content} alt="paragraph-image"></img>
+                            </a>
                         ) : null)
                     )}
                     
