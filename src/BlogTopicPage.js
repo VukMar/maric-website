@@ -26,20 +26,36 @@ function TopicPage( {topic} ){
                             <ul key={`paragraph${index}`}>
                                 {paragraph.content.map((li, index) => (
                                     <li key={`list-item${index}`}>
-                                        {li.type === 'text'? (li.content) 
-                                        : li.type === 'code'? (
+                                    {
+                                        li.type === 'text'? (
+                                            li.content
+                                        ) : li.type === 'code'? (
                                             <pre className="code">{li.content}</pre>
-                                        ) : null}</li>
+                                        ) : li.type === 'image'? (
+                                            <a className="paragraph-image" href={li.content}>
+                                                <img src={li.content} alt="paragraph-image"></img>
+                                            </a>
+                                        ) : null
+                                    }
+                                    </li>
                                 ))}
                             </ul>
                         ) : paragraph.type === 'ol'? (
                             <ol key={`paragraph${index}`}>
                                 {paragraph.content.map((li, index) => (
                                     <li key={`list-item${index}`}>
-                                        {li.type === 'text'? (li.content) 
-                                        : li.type === 'code'? (
+                                    {
+                                        li.type === 'text'? (
+                                            li.content
+                                        ) : li.type === 'code'? (
                                             <pre className="code">{li.content}</pre>
-                                        ) : null}</li>
+                                        ) : li.type === 'image'? (
+                                            <a className="paragraph-image" href={li.content}>
+                                                <img src={li.content} alt="paragraph-image"></img>
+                                            </a>
+                                        ) : null
+                                    }
+                                    </li>
                                 ))}
                             </ol>
                         ) : paragraph.type === "link"?  (
