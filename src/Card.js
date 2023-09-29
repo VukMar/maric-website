@@ -4,6 +4,8 @@ import './Card.css';
 function DeezerCard() {
     const [track, setTrack] = useState(null);
 
+
+    //Gets data from a backend that has last played track from deezer
     const fetchTrackData = () => {
         const apiUrl = 'https://backend.vukmaric.rs/api/deezer/get_track.php';
         console.log("updating card status...");
