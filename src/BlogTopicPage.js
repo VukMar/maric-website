@@ -35,6 +35,10 @@ function TopicPage( {topic} ){
                                             <a className="paragraph-image" href={li.content}>
                                                 <img src={li.content} alt="paragraph-image"></img>
                                             </a>
+                                        ) : li.type === "link"?  (
+                                            <a className="blog-link" href={li.content.href} target="_blank" rel="noreferrer">
+                                                {li.content.text}
+                                            </a>
                                         ) : null
                                     }
                                     </li>
@@ -52,6 +56,10 @@ function TopicPage( {topic} ){
                                         ) : li.type === 'image'? (
                                             <a className="paragraph-image" href={li.content}>
                                                 <img src={li.content} alt="paragraph-image"></img>
+                                            </a>
+                                        ) : li.type === "link"?  (
+                                            <a className="blog-link" href={li.content.href} target="_blank" rel="noreferrer">
+                                                {li.content.text}
                                             </a>
                                         ) : null
                                     }

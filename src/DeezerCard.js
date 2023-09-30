@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Card.css';
+import './DeezerCard.css';
 
 function DeezerCard() {
     const [track, setTrack] = useState(null);

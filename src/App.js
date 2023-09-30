@@ -9,7 +9,7 @@ import AboutMe from './AboutMe';
 import ContactMe from './ContactMe';
 import Blog from './Blog';
 import TopicPage from './BlogTopicPage';
-import DeezerCard from './Card';
+import DeezerCard from './DeezerCard';
 
 import HomeSVG from './Home.svg';
 import AboutMeSVG from './AboutMe.svg';
