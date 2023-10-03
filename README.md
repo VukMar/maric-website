@@ -12,7 +12,7 @@ Welcome to my personal website repository! This website is built with React.js f
 
 ### Notice
 
-This isn't the full version and the website is not setup yet. The [Vuk Maric Website](https://vukmaric.com) currently hosts the old version of the website found here [Website v1.1.2](https://github.com/VukMar/Personal-Site)
+This is the version of the website hosted on the [Vuk Maric Website](https://vukmaric.com) currently. The old version of the website can be found here [Website v1.1.2](https://github.com/VukMar/Personal-Site)
 
 ### To view the website:
 
