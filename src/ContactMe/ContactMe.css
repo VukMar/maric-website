@@ -1,4 +1,4 @@
-@import url('Animations.css');
+@import url('../Animations.css');
 .contact-me{
     display: flex;
     flex-wrap: wrap;
@@ -15,6 +15,9 @@
     align-items: center;
     width: 100%;
     background: linear-gradient(to top, rgba(128, 0, 128, 0.3), transparent);
+}
+.say-hello.hidden{
+    display: none;
 }
 .input-fields{
     display: flex;
@@ -109,29 +112,4 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-@media screen and (max-width: 768px){
-    .contact-me h1{
-        font-size: 25px;
-    }
-    .input-fields{
-        font-size: 16px;
-    }
-    .contact-social{
-        font-size: 16px;
-    }
-}
-
-@media screen and (max-width: 576px){
-    .input-fields{
-        width: 90%;
-        font-size: 14px;
-    }
-    .contact-logo{
-        width: 50%;
-    }
-    .contact-social{
-        font-size: 14px;
-    }
 }

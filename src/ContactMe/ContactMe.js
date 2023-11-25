@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 
 import './ContactMe.css';
 
-import Logo from './Resources/MaricLogo.png'
-import HandwaveSVG from './Hand-wave.svg'
+import Logo from '../Resources/MaricLogo.png';
+import HandwaveSVG from '../Resources/Hand-wave.svg';
 
-import likedinSVG from './SocialSVGs/linkedin.svg';
-import GitHubSVG from './SocialSVGs/GitHub.svg';
-import SocialIcon from './socialIcon';
+import likedinSVG from '../Resources/SocialSVGs/linkedin.svg';
+import GitHubSVG from '../Resources/SocialSVGs/GitHub.svg';
+import SocialIcon from '../components/socialIcon';
+import LoadingScreen from '../components/Loading';
 
 
 const ContactMe = () => {
@@ -16,6 +17,7 @@ const ContactMe = () => {
 	const [Name, setName] = useState('');
   	const [Email, setEmail] = useState('');
   	const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+	const [SendingEmail, setSendingEmail] = useState({sending: false, sent: false, failed: false});
 
 	const getName = (name) => {
 		setName(name.target.value === undefined ? '' : name.target.value);
@@ -32,34 +34,37 @@ const ContactMe = () => {
 
 	const sendEmail = async () => {
 
+		setSendingEmail({sending: true, sent: false, failed: false});
+
 		if (Name && Email) {
-		const data = new FormData();
-		data.append('name', Name);
-		data.append('email', Email);
+			const data = new FormData();
+			data.append('name', Name);
+			data.append('email', Email);
 
-		try {
-			const response = await fetch('https://backend.vukmaric.rs/api/email/SendEmail.php', {
-			method: 'POST',
-			body: data,
-			});
+			try {
+				const response = await fetch('https://backend.vukmaric.rs/api/email/SendEmail.php', {
+				method: 'POST',
+				body: data,
+				});
 
-			if (response.ok) {
-			const result = await response.text();
-			console.log(`Result received: ${result}`)
-				if (result.trim() === 'success'){
-					// Do something for success
-					console.log('Email sent successfully!');
+				if (response.ok) {
+				const result = await response.text();
+				console.log(`Result received: ${result}`)
+					if (result.trim() === 'success'){
+						setSendingEmail({sending: false, sent: true, failed: false});
+					} else {
+						setSendingEmail({sending: false, sent: false, failed: true});
+					}
 				} else {
-					// Do something for failure
-					console.log('Email sending failed.');
+					setSendingEmail({sending: false, sent: false, failed: true});
 				}
-			} else {
-			console.error('Email sending failed.');
+			} catch (error) {
+				console.error('An error occurred:', error);
+				setSendingEmail({sending: false, sent: false, failed: true});
 			}
-		} catch (error) {
-			console.error('An error occurred:', error);
 		}
-		}
+		setName('');
+		setEmail('');
 	};
 	
 	const validateEmail = (email) => {
@@ -71,8 +76,27 @@ const ContactMe = () => {
 
     return (
         <div className='contact-me'>
-				<h1>Send me a message!</h1>
-			<div className='say-hello'>
+				<LoadingScreen
+					Text={'Trying to send email'} 
+					isLoading={SendingEmail.sending}
+				/>
+				<LoadingScreen 
+					isNotification={true} 
+					Text={'Email sent!'} 
+					isLoading={SendingEmail.sent}
+					setIsLoading={() => setSendingEmail({sending: false, sent: false, failed: false})}
+				/>
+				<LoadingScreen 
+					isNotification={true} 
+					Text={'Email sending failed!'} 
+					isLoading={SendingEmail.failed}
+					setIsLoading={() => setSendingEmail({sending: false, sent: false, failed: false})}
+				/>
+			
+			<h1>Send me a message!</h1>
+			<div className={
+					(SendingEmail.sending || SendingEmail.sent || SendingEmail.failed)? 'say-hello hidden' : 'say-hello'
+				}>
 				<div className='input-fields'>
 					<label htmlFor='name'>Name</label>
 					<input autoComplete='off' id='name' onInput={getName} type='text' ></input>
