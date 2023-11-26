@@ -2,7 +2,7 @@
 import React from 'react';
 import './Home.css';
 
-import SmileSVG from './Smile.svg'
+import SmileSVG from '../Resources/Smile.svg';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

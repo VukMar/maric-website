@@ -1,5 +1,5 @@
 // src/ContactMe.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './ContactMe.css';
 
@@ -14,32 +14,38 @@ import LoadingScreen from '../components/Loading';
 
 const ContactMe = () => {
     
-	const [Name, setName] = useState('');
-  	const [Email, setEmail] = useState('');
+	const [UserInfo, setUserInfo] = useState({name: '', email: ''});
   	const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 	const [SendingEmail, setSendingEmail] = useState({sending: false, sent: false, failed: false});
-
-	const getName = (name) => {
-		setName(name.target.value === undefined ? '' : name.target.value);
-    	updateButtonStatus(Name, Email);
+	  
+	const getValue = (e) => {
+		const { name, value } = e.target;
+		setUserInfo(prevState => ({ ...prevState, [name]: value }));
 	}
-	const getEmail = (email) => {
-		validateEmail(email.target.value)? setEmail(email.target.value) : setEmail('');
-    	updateButtonStatus(Name, Email);
-	}
-
-	const updateButtonStatus = (nameValue, emailValue) => {
-		setIsButtonEnabled(nameValue !== '' && emailValue !== '');
-	  };
+		
+	const validateEmail = (email) => {
+		return email.match(
+			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		);
+	};
+	
+	useEffect(()=>{
+		updateButtonStatus();
+	}, [UserInfo])
+	
+	const updateButtonStatus = () => {
+		const isEmailValid = validateEmail(UserInfo.email);
+		setIsButtonEnabled(UserInfo.name !== '' && isEmailValid);
+	};
 
 	const sendEmail = async () => {
 
 		setSendingEmail({sending: true, sent: false, failed: false});
 
-		if (Name && Email) {
+		if (UserInfo.name != '' && validateEmail(UserInfo.email)) {
 			const data = new FormData();
-			data.append('name', Name);
-			data.append('email', Email);
+			data.append('name', UserInfo.name);
+			data.append('email', UserInfo.email);
 
 			try {
 				const response = await fetch('https://backend.vukmaric.rs/api/email/SendEmail.php', {
@@ -49,7 +55,6 @@ const ContactMe = () => {
 
 				if (response.ok) {
 				const result = await response.text();
-				console.log(`Result received: ${result}`)
 					if (result.trim() === 'success'){
 						setSendingEmail({sending: false, sent: true, failed: false});
 					} else {
@@ -63,15 +68,9 @@ const ContactMe = () => {
 				setSendingEmail({sending: false, sent: false, failed: true});
 			}
 		}
-		setName('');
-		setEmail('');
+		setUserInfo({name: '', email: ''});
 	};
 	
-	const validateEmail = (email) => {
-		return email.match(
-		  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		);
-	};
 	  
 
     return (
@@ -93,22 +92,22 @@ const ContactMe = () => {
 					setIsLoading={() => setSendingEmail({sending: false, sent: false, failed: false})}
 				/>
 			
-			<h1>Send me a message!</h1>
 			<div className={
-					(SendingEmail.sending || SendingEmail.sent || SendingEmail.failed)? 'say-hello hidden' : 'say-hello'
-				}>
+				(SendingEmail.sending || SendingEmail.sent || SendingEmail.failed)? 'say-hello hidden' : 'say-hello'
+			}>
+				<h1>Send me a message!</h1>
 				<div className='input-fields'>
 					<label htmlFor='name'>Name</label>
-					<input autoComplete='off' id='name' onInput={getName} type='text' ></input>
+					<input value={UserInfo.name} autoComplete='on' name='name' id='name' onChange={(ev) => getValue(ev)} type='text' ></input>
 					<label htmlFor='email'>Email</label>
-					<input id='email' onInput={getEmail}  type='email' autoComplete='off'></input>
+					<input id='email' value={UserInfo.email} onChange={(ev) => getValue(ev)} name='email'  type='email' autoComplete='on'></input>
 					<button onClick={sendEmail} className='run-code-btn' disabled={!isButtonEnabled}>
 						Say Hello
 						<img src={HandwaveSVG} alt='Hand-wave'/>
 					</button>
-					<img className='contact-logo' src={Logo} alt='logo-contact'/>
 				</div>
 			</div>
+			<img className='contact-logo' src={Logo} alt='logo-contact'/>
 			<div className='contact-social'>
 				<div className='contact-info'>
 					<p>You can contact me directly using my email:</p>

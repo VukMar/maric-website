@@ -14,19 +14,21 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .avatarSec{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     padding: 10px;
     background-image: url('../Resources/HomeBackground.jpg');
     background-size: 100px;
     border-radius: 20px;
     width: 95%;
-    max-width: 300px;
+    gap: 20px;
 }
 
 .stats{
@@ -52,6 +54,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: 400px;
 }
 
 

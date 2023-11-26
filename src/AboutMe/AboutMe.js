@@ -6,7 +6,7 @@ import './AboutMe.css';
 
 import ListItem from './ListItem';
 
-import PlanetSVG from '../Planet.svg';
+import PlanetSVG from '../Resources/Planet.svg';
 import MaricLogo from '../Resources/MaricLogo.png';
 import htmlSVG from '../LangSVGs/html.svg';
 import cssSVG from '../LangSVGs/css.svg';
@@ -18,7 +18,6 @@ import cppSVG from '../LangSVGs/cpp.svg';
 
 import RightArrow from '../Resources/rightArrow.svg';
 import LeftArrow from '../Resources/leftArrow.svg';
-import LoadingScreen from '../components/Loading';
 
 const AboutMe = () => {
 
@@ -93,8 +92,8 @@ const AboutMe = () => {
 			<div className='info'>
 				<div className='avatarSec'>
 					<img id='Avatar' src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
-					<h3>Technologies i use:</h3>
 					<div className='techItemList'>
+						<h3 style={{width: '100%', textAlign: 'center'}}>Technologies i use:</h3>
 						{listItemData.map((item) => (
           					<ListItem key={item.id} svgSrc={item.svgSrc} text={item.text} />
         				))}

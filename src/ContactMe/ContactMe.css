@@ -3,9 +3,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    gap: 20px;
     border-radius: 10px;
     width: 100%;
+    background: linear-gradient(to top, rgba(128, 0, 128, 0.3), transparent);
 }
 
 .say-hello{
@@ -13,8 +15,9 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    background: linear-gradient(to top, rgba(128, 0, 128, 0.3), transparent);
+    text-align: center;
+    width: 95%;;
+    max-width: 500px;
 }
 .say-hello.hidden{
     display: none;
@@ -23,6 +26,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
+    align-items: stretch;
     width: 400px;
     border-radius: 20px;
     padding: 5px;
@@ -35,7 +39,6 @@
     font-weight: bold;
 }
 .input-fields input{
-    width: 100%;
     background-color: #585858;
     border: 2px #383838 solid;
     color: white;
@@ -90,9 +93,8 @@
 }
 
 .contact-social{
-    width: 100%;
+    width: 95%;
     padding-top: 20px;
-    background-color: rgba(128, 0, 128, 0.3);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

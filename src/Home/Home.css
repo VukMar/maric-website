@@ -1,4 +1,4 @@
-@import url('Animations.css');
+@import url('../Animations.css');
 
 .home{
     width: 100%;
@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('./Resources/HomeBackground.jpg');
+    background-image: url('../Resources/HomeBackground.jpg');
     background-size: 25%;
 }
 
