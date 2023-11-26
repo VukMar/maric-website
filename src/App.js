@@ -4,27 +4,29 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import './App.css';
 
-import Home from './Home';
-import AboutMe from './AboutMe';
-import ContactMe from './ContactMe';
-import Blog from './Blog';
-import TopicPage from './BlogTopicPage';
-import DeezerCard from './DeezerCard';
+import Home from './Home/Home';
+import AboutMe from './AboutMe/AboutMe';
+import ContactMe from './ContactMe/ContactMe';
+import Blog from './Blog/Blog';
+import TopicPage from './Blog/BlogTopicPage';
+import DeezerCard from './components/DeezerCard';
 
-import HomeSVG from './Home.svg';
-import AboutMeSVG from './AboutMe.svg';
-import ContactMeSVG from './ContactMe.svg';
-import MyProjectsSVG from './Blog.svg';
+import HomeSVG from './Resources/Home.svg';
+import AboutMeSVG from './Resources/AboutMe.svg';
+import ContactMeSVG from './Resources/ContactMe.svg';
+import MyProjectsSVG from './Resources/Blog.svg';
 
-import likedinSVG from './SocialSVGs/linkedin.svg';
-import GitHubSVG from './SocialSVGs/GitHub.svg';
+import likedinSVG from './Resources/SocialSVGs/linkedin.svg';
+import GitHubSVG from './Resources/SocialSVGs/GitHub.svg';
 
 import Logo from './Resources/MaricLogo.png'
+import LoadingScreen from './components/Loading';
 
 function App(){
   
-  	const [selectedLink, setSelectedLink] = React.useState(null);
-	const [TopicList, setTopicList] = React.useState([]);
+  	const [selectedLink, setSelectedLink] = useState(null);
+	const [TopicList, setTopicList] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 
 	useEffect(() => {
@@ -58,6 +60,7 @@ function App(){
 		})
 		.then(data => {
 			setTopicList(data);
+			setIsLoading(false);
 		})
 		.catch(error => {
 			console.error('There was a problem with the fetch operation:', error);
@@ -67,6 +70,7 @@ function App(){
 
   	return (
     <Router>
+		<LoadingScreen Text={'Loading'} isLoading={isLoading}/>
       	<div className="app">
 			<img className='MainLogo' src={Logo} alt='main-logo'/>
 			<nav id="nav">	
@@ -97,14 +101,10 @@ function App(){
 			</Routes>
 
 			<footer>
-				<div className='name-logo'>
-					<img className='MainLogo footer-logo' src={Logo} alt='logo-side-one'/>
-					<p className='footer-name'>Vuk Maric 2023<span>Ⓒ</span></p>
-					<img className='MainLogo footer-logo' src={Logo} alt='logo-side-two'/>
-				</div>
+				<DeezerCard/>
 				<div className='footer-links'>
 					<ul className='footer-link-list'>
-						Interesting websites:
+					Interesting websites:
 						<li>
 							<a className='footer-link' href='https://www.sololearn.com/' target='_blank' rel='noreferrer' >
 								SoloLearn
@@ -132,7 +132,7 @@ function App(){
 						</a>
 					</div>
 				</div>
-				<DeezerCard/>
+				<p className='footer-name'>Vuk Maric 2023<span>Ⓒ</span></p>
 			</footer>
       	</div>
     </Router>

@@ -1,0 +1,112 @@
+@import url('../Animations.css');
+
+.home{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../Resources/HomeBackground.jpg');
+    background-size: 25%;
+}
+
+
+.home h1{
+    width: 100%;
+    text-align: center  ;
+    margin-top: 0px;
+    letter-spacing: 4px;
+    padding: 10px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #141414, transparent);
+}
+
+.home-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #14141499;
+    border: 1px solid purple;
+    padding-bottom: 20px;
+}
+
+.hello{
+    width: 95%;
+    max-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
+    padding-top: 20px;
+
+}
+
+.name{
+    margin-left: 10px;
+    color: transparent;
+    font-weight: 700;
+    background: linear-gradient(to left, purple, aqua);
+    -webkit-background-clip: text;
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.name::before {
+    content: "Maric, "; 
+    animation: changeContent 6s linear forwards;
+}
+
+.home p{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    margin: 2px;
+    z-index: 1;
+    border-radius: 20px;
+}
+.home ul{
+    align-self: flex-start;
+}
+.ul-title{
+    padding-left: 10px;
+    align-self: flex-start;
+}
+.home ul li{
+    padding: 10px;
+}
+.home ul li a{
+    text-decoration: none;
+    color: aliceblue;
+    border-bottom: 2px solid purple;
+}
+
+.end-page{
+    height: 100px;
+    background: linear-gradient(to top, #141414, transparent);
+    width: 100%;
+}
+
+.home-img{
+    width: 95%;
+    z-index: 0;
+    opacity: 0.7;
+    border-radius: 20px;
+    border: solid 5px black;
+    filter: drop-shadow(0px 0px 10px purple);
+}
+
+
+
+
+
