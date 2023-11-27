@@ -101,7 +101,7 @@ const AboutMe = () => {
 					<img className='stats' src='https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=VukMar&theme=dark' alt='stats-github'></img>
 				</div>
 				<div className='mainInfo'>
-					<div>
+					<div className='bio-sec'>
 						<p>
 							I'm a self-taught programmer from
 						</p>

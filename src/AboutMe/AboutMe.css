@@ -60,12 +60,21 @@
 
 .mainInfo{
     width: 95%;
-    max-width: 700px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-evenly;
+    height: max-content;
+}
+
+.bio-sec{
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    height: max-content;
+    width: 90%;
+    max-width: 650px;
 }
 
 #CityLink{
