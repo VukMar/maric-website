@@ -101,25 +101,27 @@ const AboutMe = () => {
 					<img className='stats' src='https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=VukMar&theme=dark' alt='stats-github'></img>
 				</div>
 				<div className='mainInfo'>
-					<p>
-						I'm a self-taught programmer from
-					</p>
-					<a id='CityLink' href='https://www.google.com/maps/place/%D0%9D%D0%BE%D0%B2%D0%B8+%D0%A1%D0%B0%D0%B4' target='_blank' rel="noreferrer">
-						<img id='planet' src={PlanetSVG} alt='planet'/>
-						Novi Sad, Serbia
-					</a>
-					<p>
-						Born on September 25, 1994, I began my career as a skilled chef, delighting palates with my culinary creations.
-					</p>
-					<p>
-						Driven by curiosity, I ventured into programming, discovering a new passion. Despite lacking formal education, I dedicated myself to self-learning, mastering various languages and technologies.
-					</p>
-					<p>
-						I have learned from a variety of sources like YouTube and SoloLearn.
-					</p>
-					<p>
-						Combining my background as a chef with programming, I embrace challenges, finding joy in creating innovative solutions. My diverse experiences enrich my problem-solving approach, driving me to make a positive impact.Through continuous learning and an entrepreneurial spirit, I strive for greatness, inspiring others to follow their passions. 
-					</p>
+					<div>
+						<p>
+							I'm a self-taught programmer from
+						</p>
+						<a id='CityLink' href='https://www.google.com/maps/place/%D0%9D%D0%BE%D0%B2%D0%B8+%D0%A1%D0%B0%D0%B4' target='_blank' rel="noreferrer">
+							<img id='planet' src={PlanetSVG} alt='planet'/>
+							Novi Sad, Serbia
+						</a>
+						<p>
+							Born on September 25, 1994, I began my career as a skilled chef, delighting palates with my culinary creations.
+						</p>
+						<p>
+							Driven by curiosity, I ventured into programming, discovering a new passion. Despite lacking formal education, I dedicated myself to self-learning, mastering various languages and technologies.
+						</p>
+						<p>
+							I have learned from a variety of sources like YouTube and SoloLearn.
+						</p>
+						<p>
+							Combining my background as a chef with programming, I embrace challenges, finding joy in creating innovative solutions. My diverse experiences enrich my problem-solving approach, driving me to make a positive impact.Through continuous learning and an entrepreneurial spirit, I strive for greatness, inspiring others to follow their passions. 
+						</p>
+					</div>
 					<div className='certificates-sec'>
 						<h1>CERTIFICATES</h1>
 						<p className='pick-lang-title'>Pick a language</p>
