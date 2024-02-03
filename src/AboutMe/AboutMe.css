@@ -1,11 +1,13 @@
 @import url('../Animations.css');
 
 .AboutMe{
+    box-sizing: border-box;
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: max-content;
 }
 
 .info{
@@ -113,10 +115,14 @@
 }
 
 .certificates-sec{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
 }
 .cert-pick-container{
     width: 100%;
@@ -171,90 +177,6 @@
     border-top: none;
     border-bottom: none;
     animation: none;
-}
-
-.certificates-display{
-    margin-top: 10px;
-    width: 100%;    
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    height: fit-content;
-}
-
-.certificates-display button{
-    width: 30px;
-    background-color: transparent;
-    color: transparent;
-    border: none;
-    transition-duration: 0.6s;
-}
-.certificates-display button:hover{
-    width: 100px;
-    cursor: pointer;
-    background-color: transparent;
-    color: aqua;
-    border: none;
-}
-.certificates-display .right{
-    background: linear-gradient(to right, purple, transparent);
-}
-.certificates-display .left{
-    background: linear-gradient(to left, purple, transparent);
-}
-.certificates-display button img{
-    width: 50%;
-    filter: drop-shadow(5px 0px 2px aqua);
-}
-
-.certificates-display .right img{
-    filter: drop-shadow(-5px  0px 2px aqua);
-}
-
-.cert-list{
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    height: 200px;
-}
-.cert-list img{
-    width: 100px;
-    opacity: 0.8;
-    border: 2px solid purple;
-    transition-duration: 1s;
-}
-.cert-list img:hover{
-    cursor: pointer;
-    opacity: 0.9;
-    border: 2px solid purple;
-    transform: translateY(-5px);
-}
-.cert-list img.selected{
-    opacity: 1;
-    border: 2px solid purple;
-    transform: translateY(-10px);
-}
-.display-cert{
-    width: 95%;
-    max-width: 500px;
-    opacity: 1;
-    transition-duration: 0.5s;
-    object-fit: cover;
-    animation: fadeIn 1s linear;
-    height: fit-content;
-}
-@keyframes fadeIn {
-    from{
-        opacity: 0;
-    }to{
-        opacity: 1;
-    }
-}
-.display-cert.error{
-    width: 50%;
-    opacity: 1;
 }
 
 .hidden{

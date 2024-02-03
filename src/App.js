@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 import Home from './Home/Home';
-import AboutMe from './AboutMe/AboutMe';
+import { AboutMe } from './AboutMe/AboutMe';
 import ContactMe from './ContactMe/ContactMe';
 import Blog from './Blog/Blog';
 import TopicPage from './Blog/BlogTopicPage';
@@ -22,11 +22,30 @@ import GitHubSVG from './Resources/SocialSVGs/GitHub.svg';
 import Logo from './Resources/MaricLogo.png'
 import LoadingScreen from './components/Loading';
 
+import htmlSVG from './LangSVGs/html.svg';
+import cssSVG from './LangSVGs/css.svg';
+import jsSVG from './LangSVGs/JavaScript.svg';
+import nodeJsSVG from './LangSVGs/nodeJs.svg';
+import reactSVG from './LangSVGs/react.svg';
+import phpSVG from './LangSVGs/php.svg';
+import cppSVG from './LangSVGs/cpp.svg';
+
 function App(){
+
+	const listItemData = [
+		{ id: 1, svgSrc: htmlSVG, text: 'HTML - Hyper Text Markup Language' },
+		{ id: 2, svgSrc: cssSVG, text: 'CSS - Cascade Style Sheets' },
+		{ id: 3, svgSrc: jsSVG, text: 'JavaScript' },
+		{ id: 4, svgSrc: nodeJsSVG, text: 'nodeJs' },
+		{ id: 5, svgSrc: reactSVG, text: 'React' },
+		{ id: 6, svgSrc: phpSVG, text: 'PhP' },
+		{ id: 7, svgSrc: cppSVG, text: 'C++' },
+	];
   
   	const [selectedLink, setSelectedLink] = useState(null);
 	const [TopicList, setTopicList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [LatestBlog, setLatestBlog] = useState(null);
 
 
 	useEffect(() => {
@@ -49,22 +68,39 @@ function App(){
 	})
 
 
-	function fetchTopics(){
-		fetch('https://backend.vukmaric.rs/api/blog/GetBlogTopics.php')
-		.then(response => {
-			if(response.ok){
-				return response.json();
-			}else{
-				throw new Error('Network response not ok!');
-			}
-		})
-		.then(data => {
-			setTopicList(data);
-			setIsLoading(false);
-		})
-		.catch(error => {
-			console.error('There was a problem with the fetch operation:', error);
+	const fetchTopics = async () => {
+		const response = await fetch('https://backend.vukmaric.rs/api/blog/GetBlogTopics.php')
+		if (!response.ok) {
+			throw new Error(`Failed to fetch topics. Status: ${response.status}`);
+		}
+	  
+		const data = await response.json();
+		setTopicList(data);
+		const latest = findLatestBlog(data);
+		setLatestBlog(latest);
+		setIsLoading(false);
+	}
+
+	function findLatestBlog(blogList) {
+		if (!blogList || blogList.length === 0) {
+		  	return null;
+		}
+		
+		const sortedBlogs = blogList.sort((a, b) => {
+		  	const dateA = parseDate(a.date);
+		  	const dateB = parseDate(b.date);
+	  
+			return dateB - dateA;
 		});
+	  
+		const latestBlog = sortedBlogs[0];
+	  
+		return latestBlog;
+	}
+	
+	function parseDate(dateString) {
+		const [day, month, year] = dateString.split('.').map(Number);
+		return new Date(year, month - 1, day);
 	}
 
 
@@ -93,8 +129,8 @@ function App(){
 			</nav>
 
 			<Routes>
-				<Route path="/" element={<Home/>} />
-				<Route path="/AboutMe" element={<AboutMe />} />
+				<Route path="/" element={<Home listItemData={listItemData} latestBlog={LatestBlog}/>} />
+				<Route path="/AboutMe" element={<AboutMe listItemData={listItemData} />} />
 				<Route path="/ContactMe" element={<ContactMe />} />
 				<Route path="/Blog" element={<Blog  topicList={TopicList}/>}/>
 				{topicRoutes}

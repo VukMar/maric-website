@@ -7,35 +7,14 @@ import './AboutMe.css';
 import ListItem from './ListItem';
 
 import PlanetSVG from '../Resources/Planet.svg';
-import MaricLogo from '../Resources/MaricLogo.png';
-import htmlSVG from '../LangSVGs/html.svg';
-import cssSVG from '../LangSVGs/css.svg';
-import jsSVG from '../LangSVGs/JavaScript.svg';
-import nodeJsSVG from '../LangSVGs/nodeJs.svg';
-import reactSVG from '../LangSVGs/react.svg';
-import phpSVG from '../LangSVGs/php.svg';
-import cppSVG from '../LangSVGs/cpp.svg';
+import { DisplayCert } from '../components/CertDisplay';
 
-import RightArrow from '../Resources/rightArrow.svg';
-import LeftArrow from '../Resources/leftArrow.svg';
-
-const AboutMe = () => {
-
-	const listItemData = [
-		{ id: 1, svgSrc: htmlSVG, text: 'HTML - Hyper Text Markup Language' },
-		{ id: 2, svgSrc: cssSVG, text: 'CSS - Cascade Style Sheets' },
-		{ id: 3, svgSrc: jsSVG, text: 'JavaScript' },
-		{ id: 4, svgSrc: nodeJsSVG, text: 'nodeJs' },
-		{ id: 5, svgSrc: reactSVG, text: 'React' },
-		{ id: 6, svgSrc: phpSVG, text: 'PhP' },
-		{ id: 7, svgSrc: cppSVG, text: 'C++' },
-	  ];
+export const AboutMe = ({listItemData}) => {
 	
 	const backend = 'https://backend.vukmaric.rs/api/certificates/'
 
 	const [value, setValue] = React.useState(null);
 	const [certificateImages, setCertificateImages] = React.useState([]);
-	const [selectedIndex, setSelectedIndex] = React.useState(0);
 	
 	useEffect(() =>{
 		certChange('HTML');
@@ -59,7 +38,6 @@ const AboutMe = () => {
 		.then((response) => response.json())
 		.then((data) => {
 		  	setCertificateImages(data);
-			setSelectedIndex(0);
 		})
 		.catch((error) => {
 		  	console.error('Error fetching certificates:', error);
@@ -67,25 +45,7 @@ const AboutMe = () => {
 		});
 	};
 
-	const switchImage = ( right ) => {
-		let index = selectedIndex;
-		if(right === true){
-			if(index < certificateImages.length-1){
-				index++;
-			}
-			else{
-				index = 0;
-			}
-		}else{
-			if(index > 0){
-				index--;
-			}
-			else{
-				index = certificateImages.length-1;
-			}
-		}
-		setSelectedIndex(index);
-	};
+	
 
 	return (
 		<div className='AboutMe'>
@@ -131,46 +91,11 @@ const AboutMe = () => {
 							<button className={value === 'JavaScript' ? 'selected' : ''} onClick={()=>certChange('JavaScript')}>JavaScript</button>
 							<button className={value === 'CPP' ? 'selected' : ''} onClick={()=>certChange('CPP')}>CPP</button>
 						</div>
-						<div className='certificates-display'>
-							<button className={certificateImages.length <= 1? 'hidden' : 'left'} onClick={() => switchImage(false)}>
-								<img src={LeftArrow} alt='arrow'></img>
-							</button>
-							{certificateImages.length > 0 ? (
-								certificateImages.map((imageUrl, index) => (
-										<img 
-											className={selectedIndex === index? 'display-cert' : 'display-cert hidden'}
-											key={index} 
-											src={backend+imageUrl} 
-											alt={`display-cert`} 
-										/>
-									))
-								) : (
-									<img 
-											className='display-cert error' 
-											src={MaricLogo} 
-											alt={`display-cert`} 
-									/>
-								)
-							}
-							<button className={certificateImages.length <= 1? 'hidden' :'right'} onClick={() => switchImage(true)}>
-								<img src={RightArrow} alt='arrow'></img>
-							</button>
-						</div>
-						<div className='cert-list'>
-							{certificateImages.length > 0 ? (
-								certificateImages.map((imageUrl, index) => (
-									<img className={selectedIndex === index ? 'selected' : '' } onClick={() => setSelectedIndex(index)} key={index} src={backend+imageUrl} alt={`${value} Certificate ${index + 1}`} />
-									))
-								) : (
-										<p>No certificates found for {value}.</p>
-								)
-							}
-						</div>
+						<DisplayCert pLanguage={value} certificateImages={certificateImages} backend={backend} />
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	);
 };
-
-export default AboutMe;
