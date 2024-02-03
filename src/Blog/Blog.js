@@ -84,7 +84,7 @@ const Blog = ({topicList}) => {
 			<div className="blog-topics">
 				{FilteredTopics.length > 0 ? (
 						FilteredTopics.map((topic, index) => (
-							<BlogTopic key={index} id={index} cover={topic.cover} title={topic.title} date={topic.date} smallDesc={topic.shortdesc}/>
+							<BlogTopic topic={topic} id={index} />
 							))
 						) : (
 								<p>Sorry no topics found, more to come!</p>

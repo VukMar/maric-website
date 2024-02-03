@@ -1,0 +1,114 @@
+.certificates-display{
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+.certificates-display button{
+    position: absolute;
+    box-sizing: border-box;
+    width: 50px;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+    transition-duration: 0.6s;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+
+.certificates-display .right img{
+    animation: bounceRight 2s linear infinite;
+}
+
+.certificates-display .left img{
+    animation: bounceLeft 2s linear infinite;
+}
+
+.certificates-display .right{
+    right: 0px;
+    background: linear-gradient(to left, purple, transparent);
+}
+
+.certificates-display .left{
+    left: 0px;
+    background: linear-gradient(to right, purple, transparent);
+}
+
+.certificates-display button img{
+    width: 50%;
+    transition-duration: 0.6s;
+    filter: drop-shadow(0px 0px 2px aqua);
+}
+
+.certificates-display button:hover img{
+    width: 90%;
+}
+
+@keyframes bounceLeft {
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(-10px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes bounceRight {
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(10px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.display-cert{
+    width: 100%;
+    opacity: 1;
+    transition-duration: 0.5s;
+    object-fit: cover;
+    height: fit-content;
+}
+.display-cert.error{
+    width: 50%;
+    opacity: 1;
+}
+
+.cert-list{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+}
+.cert-list img{
+    width: 100px;
+    opacity: 0.8;
+    border: 2px solid purple;
+    transition-duration: 1s;
+}
+.cert-list img:hover{
+    cursor: pointer;
+    opacity: 0.9;
+    border: 2px solid purple;
+    transform: translateY(-5px);
+}
+.cert-list img.selected{
+    opacity: 1;
+    border: 2px solid purple;
+    transform: translateY(-10px);
+}

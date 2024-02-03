@@ -2,22 +2,23 @@
 import React from 'react';
 import './Home.css';
 
-import SmileSVG from '../Resources/Smile.svg';
 import { Link } from 'react-router-dom';
+import ListItem from '../AboutMe/ListItem';
 
-const Home = () => {
+const Home = ({latestBlog,listItemData}) => {
+
   return (
 	<div className="home">
-		<h1>WELCOME</h1>
-		<img src='https://ychef.files.bbci.co.uk/1920x640/p0brm495.jpg' className='home-img'></img>
+		<div className='start-page'></div>
 		<div className='home-content'>
 			<div className='hello'>
 				Hello my name is
 				<div className='name'>
 				</div>
 			</div>
-			<p>I'm passionate about programming, and I strive to learn something new every day!</p>
-			<p>I invite you to explore my website to learn more about my journey in the world of programming.</p>
+			<p className='p'>I'm passionate about programming, and I strive to learn something new every day!</p>
+			<img id='Avatar' src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
+			<p className='p'>I invite you to explore my website to learn more about my journey in the world of programming.</p>
 			<label className='ul-title'>You can follow these links to get a glimpse of what i do:</label>
 			<ul>
 				<li>
@@ -30,10 +31,15 @@ const Home = () => {
 					</a>
 				</li>
 			</ul>
-			<p>
-				Ready to dive in? Just click on one of the links in navigation menu to start exploring!
-			</p>
-			<img width={100} src={SmileSVG} alt='smile'/>
+			<h2 className='latest-blog-heading'>LATEST BLOG</h2>
+			{latestBlog !== null && latestBlog !== undefined?(
+				<a className='latest-blog-div'>
+					<img className='latest-blog-image' src={latestBlog.cover} alt='latest-blog-cover'/>
+						<h3>{latestBlog.title}</h3>
+						<h4>{latestBlog.date}</h4>
+					<p>{latestBlog.shortdesc}</p>
+				</a>
+			) : (<></>)}
 		</div>
 		<div className='end-page'></div>
 	</div>
