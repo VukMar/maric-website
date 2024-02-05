@@ -19,20 +19,18 @@ const Blog = ({topicList}) => {
 	}, [topicList]);
 
 	const generateKeyWords = () => {
-
-		let keywords = [];
-	
-		topicList.map(el => {
-			el.title.split(" ").map(keyword =>{
-				if(keyword.length >= 3 && !keywords.includes(keyword))
-					keywords.push(keyword);
+		let keywordsSet = new Set();
+	  
+		topicList.forEach(el => {
+			const tagsArray = Array.isArray(el.tags) ? el.tags : Object.values(el.tags);
+		
+			tagsArray.forEach(tag => {
+				keywordsSet.add(tag);
 			});
-		})
+		});
+	  
+		const keywords = Array.from(keywordsSet);
 		setKeywords(keywords);
-	}
-
-	const selectKeyword = (value) => {
-
 	}
 
 	const handleFilter = (value) => {
@@ -40,7 +38,7 @@ const Blog = ({topicList}) => {
 		if(value.length >= 3){
 			let topics = [];
 			topicList.map(topic => {
-				if(AincludesB(topic.title, value)){
+				if(AincludesB(topic.title, value) || tagsMatch(topic.tags, value)){
 					topics.push(topic);
 				}
 			})
@@ -50,6 +48,13 @@ const Blog = ({topicList}) => {
 			setFilteredTopics(topicList);
 		}
 		setFIlterText(value);
+	}
+
+	const tagsMatch = (tags, keyword) => {
+		const tagsArray = Array.isArray(tags) ? tags : Object.values(tags);
+		tagsArray.forEach(tag => {
+			return wordsMatch(tag, keyword);
+		});
 	}
 
 	const wordsMatch = (a, b) => {

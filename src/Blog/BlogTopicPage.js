@@ -3,7 +3,7 @@ import React from "react";
 import './BlogTopicPage.css'
 
 function TopicPage( {topic} ){
-
+    console.log(topic.tags);
     return (
         <div className="blog-topic-page">
             <div className="blog-topic-title">
