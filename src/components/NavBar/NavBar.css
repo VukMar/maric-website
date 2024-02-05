@@ -1,0 +1,95 @@
+.app nav{
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	color: aqua;
+	justify-self: flex-start;
+	align-self: flex-start;
+	text-align: left;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+	width: 100%;
+	padding: 5px;
+    transition-duration: 1s;
+}
+
+.app nav .link-list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.app nav a{
+    overflow: hidden;
+    width: fit-content;
+    box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+    flex-wrap: nowrap;
+	align-items: center;
+    justify-content: flex-start;
+	text-decoration: none;
+	color: aqua;
+	transition-duration: 0.7s;
+    gap: 5px;
+    border-bottom: 2px solid transparent;
+    padding-right: 5px;
+}
+
+.app nav a.selected
+{
+    align-items: baseline;
+    border-color: purple;
+}
+
+.app nav a:hover
+{
+	color: white;
+    border-color: white;
+}
+.app nav a img
+{
+    border: 2px solid transparent;
+    border-radius: 10px;
+	padding: 5px;
+	width: 20px;
+	transition-duration: 0.5s;
+}
+.app nav a img.selected
+{
+	border: 2px solid purple;
+}
+.app nav a.selected:hover
+{
+    border-color: purple;
+}
+
+@media (min-width: 100px) and (max-width: 1000px){
+	.app nav {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0px;
+        background-color: #282828;
+        width: fit-content;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: calc(100% + 200px);
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+
+    }
+    .app nav a{
+        box-sizing: border-box;
+        margin: 0 0 0 0;
+        width: 100%;
+        min-width: 200px;
+    }
+}
