@@ -11,11 +11,6 @@ import Blog from './Blog/Blog';
 import TopicPage from './Blog/BlogTopicPage';
 import DeezerCard from './components/DeezerCard';
 
-import HomeSVG from './Resources/Home.svg';
-import AboutMeSVG from './Resources/AboutMe.svg';
-import ContactMeSVG from './Resources/ContactMe.svg';
-import MyProjectsSVG from './Resources/Blog.svg';
-
 import likedinSVG from './Resources/SocialSVGs/linkedin.svg';
 import GitHubSVG from './Resources/SocialSVGs/GitHub.svg';
 
@@ -29,6 +24,7 @@ import nodeJsSVG from './LangSVGs/nodeJs.svg';
 import reactSVG from './LangSVGs/react.svg';
 import phpSVG from './LangSVGs/php.svg';
 import cppSVG from './LangSVGs/cpp.svg';
+import NavBar from './components/NavBar/NavBar';
 
 function App(){
 
@@ -42,20 +38,16 @@ function App(){
 		{ id: 7, svgSrc: cppSVG, text: 'C++' },
 	];
   
-  	const [selectedLink, setSelectedLink] = useState(null);
+  	
 	const [TopicList, setTopicList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [LatestBlog, setLatestBlog] = useState(null);
 
 
 	useEffect(() => {
-		setSelectedLink(window.location.pathname);
-		fetchTopics();
+		setIsLoading(false)
+		//fetchTopics();
 	}, [] );
-
-  	const handleClicks = (link) =>{
-		setSelectedLink(link);
-  	}
 
 	const topicRoutes = TopicList.map((topic, index) =>{
 		return (
@@ -109,24 +101,8 @@ function App(){
 		<LoadingScreen Text={'Loading'} isLoading={isLoading}/>
       	<div className="app">
 			<img className='MainLogo' src={Logo} alt='main-logo'/>
-			<nav id="nav">	
-				<Link className={selectedLink === '/' ? 'selected' : ''} onClick={() => handleClicks('/')} to="/">
-					<img className={selectedLink === '/' ? 'selected' : ''} src={HomeSVG} alt="nav-icon"/>
-					Home
-				</Link>
-				<Link className={selectedLink === '/AboutMe' ? 'selected' : ''} onClick={() => handleClicks('/AboutMe')} to="/AboutMe">
-					<img className={selectedLink === '/AboutMe' ? 'selected' : ''} src={AboutMeSVG} alt="nav-icon"/>
-					About Me
-					</Link>
-				<Link className={selectedLink === '/ContactMe' ? 'selected' : ''} onClick={() => handleClicks('/ContactMe')} to="/ContactMe">
-					<img className={selectedLink === '/ContactMe' ? 'selected' : ''} src={ContactMeSVG} alt="nav-icon"/>
-					Contact Me
-					</Link>
-				<Link className={selectedLink === '/Blog' ? 'selected' : ''} onClick={() => handleClicks('/Blog')} to="/Blog">
-					<img className={selectedLink === '/Blog' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
-					Blog
-				</Link>
-			</nav>
+			<NavBar />
+			
 
 			<Routes>
 				<Route path="/" element={<Home listItemData={listItemData} latestBlog={LatestBlog}/>} />
