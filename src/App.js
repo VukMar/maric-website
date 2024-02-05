@@ -45,8 +45,7 @@ function App(){
 
 
 	useEffect(() => {
-		setIsLoading(false)
-		//fetchTopics();
+		fetchTopics();
 	}, [] );
 
 	const topicRoutes = TopicList.map((topic, index) =>{
@@ -68,6 +67,9 @@ function App(){
 	  
 		const data = await response.json();
 		setTopicList(data);
+		data.forEach(el => {
+			console.log(el.tags);
+		});
 		const latest = findLatestBlog(data);
 		setLatestBlog(latest);
 		setIsLoading(false);
