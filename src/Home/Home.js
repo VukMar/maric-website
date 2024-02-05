@@ -27,7 +27,7 @@ const Home = ({latestBlog,listItemData}) => {
 				<li>
 					<a className='link-span' target='_blank' href='https://github.com/VukMar' rel='noreferrer'>
 						GitHub	
-						- Discover my latest projects
+						- Discover my latest open source projects
 					</a>
 				</li>
 			</ul>
