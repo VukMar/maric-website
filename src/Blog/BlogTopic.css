@@ -1,16 +1,17 @@
 .blog-topic{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     text-decoration: none;
     color: aqua;
     width: 100%;
     max-width: 500px;
-    height: max-content;
     border: 2px solid purple;
     overflow:hidden;
     border-radius: 15px;
     transition-duration: 0.7s;
+    background: linear-gradient(to right, purple, transparent);
 }
 .blog-topic:hover{
     border: 3px solid aqua;
@@ -31,7 +32,6 @@
     justify-content: flex-start;
     width: 500px;
     z-index: 0;
-    background: linear-gradient(to right, purple, transparent);
     text-shadow: 2px 2px 2px black;
 }
 

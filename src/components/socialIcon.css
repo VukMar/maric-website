@@ -1,7 +1,8 @@
 .contact-social-icon{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    gap: 5px;
     align-items: center;
     width: 180px;
     text-align: center;
