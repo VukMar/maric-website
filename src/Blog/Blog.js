@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import BlogTopic from "./BlogTopic";
+import BlogTopicCard from "../components/BlogTopicCard/BlogTopicCard";
 import './Blog.css'
 
 
@@ -89,7 +89,7 @@ const Blog = ({topicList}) => {
 			<div className="blog-topics">
 				{FilteredTopics.length > 0 ? (
 						FilteredTopics.map((topic, index) => (
-							<BlogTopic topic={topic} id={index} />
+							<BlogTopicCard topic={topic}/>
 							))
 						) : (
 								<p>Sorry no topics found, more to come!</p>

@@ -4,6 +4,7 @@ import './Home.css';
 
 import { Link } from 'react-router-dom';
 import ListItem from '../AboutMe/ListItem';
+import BlogTopicCard from '../components/BlogTopicCard/BlogTopicCard';
 
 const Home = ({latestBlog,listItemData}) => {
 
@@ -33,12 +34,7 @@ const Home = ({latestBlog,listItemData}) => {
 			</ul>
 			<h2 className='latest-blog-heading'>LATEST BLOG</h2>
 			{latestBlog !== null && latestBlog !== undefined?(
-				<a className='latest-blog-div'>
-					<img className='latest-blog-image' src={latestBlog.cover} alt='latest-blog-cover'/>
-						<h3>{latestBlog.title}</h3>
-						<h4>{latestBlog.date}</h4>
-					<p>{latestBlog.shortdesc}</p>
-				</a>
+				<BlogTopicCard topic={latestBlog} />
 			) : (<></>)}
 		</div>
 		<div className='end-page'></div>

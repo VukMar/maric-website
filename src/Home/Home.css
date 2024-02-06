@@ -128,58 +128,6 @@
     border: 2px solid aqua;
 }
 
-.latest-blog-div{
-    position: relative;
-    width: 100%;
-    max-width: 450px;
-    height: fit-content;
-    filter: drop-shadow(0px 0px 4px aqua);
-    text-decoration: none;
-    overflow: hidden;
-    border-radius: 10px;
-    border: 2px solid aqua;
-    color: aliceblue;
-    background-color: #282828;
-    cursor: pointer;
-    transition-duration: 0.6s;
-    margin-bottom: 30px;
-}
-
-.latest-blog-div:hover{
-    filter: drop-shadow(0px 0px 4px purple);
-    border: 2px solid purple;
-    transform: translateY(-10px);
-}
-
-.latest-blog-div img{
-    width: 100%;
-}
-
-.latest-blog-div h3{
-    margin: 0;
-    box-sizing: border-box;
-    padding-left: 10px;
-    filter: drop-shadow(0px 0px 4px #282828);
-    width: 100%;
-}
-.latest-blog-div h4{
-    margin: 0;
-    margin-top: 5px;
-    box-sizing: border-box;
-    padding-left: 10px;
-    filter: drop-shadow(0px 0px 4px #282828);
-    width: 100%;
-    border-bottom: 2px solid purple;
-    padding-bottom: 5px;
-}
-.latest-blog-div p{
-    margin: 0;
-    text-align: left;
-    box-sizing: border-box;
-    padding: 10px;
-    filter: drop-shadow(0px 0px 4px #282828);
-    width: 100%;
-}
 
 
 
