@@ -89,7 +89,7 @@ const Blog = ({topicList}) => {
 			<div className="blog-topics">
 				{FilteredTopics.length > 0 ? (
 						FilteredTopics.map((topic, index) => (
-							<BlogTopicCard topic={topic}/>
+							<BlogTopicCard topic={topic} id={index}/>
 							))
 						) : (
 								<p>Sorry no topics found, more to come!</p>

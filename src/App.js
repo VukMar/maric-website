@@ -67,9 +67,6 @@ function App(){
 	  
 		const data = await response.json();
 		setTopicList(data);
-		data.forEach(el => {
-			console.log(el.tags);
-		});
 		const latest = findLatestBlog(data);
 		setLatestBlog(latest);
 		setIsLoading(false);

@@ -3,10 +3,9 @@ import React from 'react';
 import './Home.css';
 
 import { Link } from 'react-router-dom';
-import ListItem from '../AboutMe/ListItem';
 import BlogTopicCard from '../components/BlogTopicCard/BlogTopicCard';
 
-const Home = ({latestBlog,listItemData}) => {
+const Home = ({latestBlog}) => {
 
   return (
 	<div className="home">
@@ -33,9 +32,11 @@ const Home = ({latestBlog,listItemData}) => {
 				</li>
 			</ul>
 			<h2 className='latest-blog-heading'>LATEST BLOG</h2>
-			{latestBlog !== null && latestBlog !== undefined?(
-				<BlogTopicCard topic={latestBlog} />
-			) : (<></>)}
+			<div className='latest-blog-container'>
+				{latestBlog !== null && latestBlog !== undefined?(
+					<BlogTopicCard topic={latestBlog} id={1001} />
+					) : (<></>)}
+			</div>
 		</div>
 		<div className='end-page'></div>
 	</div>
