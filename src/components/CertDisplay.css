@@ -7,20 +7,23 @@
     align-items: stretch;
     justify-content: center;
     justify-content: space-between;
+    max-width: 500px;
+    border: 2px purple solid;
+    filter: drop-shadow(0px 0px 10px purple);
 }
 
 .certificates-display button{
     position: absolute;
     box-sizing: border-box;
-    width: 50px;
+    width: 80px;
     background-color: transparent;
     color: transparent;
     border: none;
     transition-duration: 0.6s;
-    height: 100%;
+    padding: 20px;
     cursor: pointer;
+    align-self: center;
 }
-
 
 
 .certificates-display .right img{
@@ -33,12 +36,10 @@
 
 .certificates-display .right{
     right: 0px;
-    background: linear-gradient(to left, purple, transparent);
 }
 
 .certificates-display .left{
     left: 0px;
-    background: linear-gradient(to right, purple, transparent);
 }
 
 .certificates-display button img{
@@ -88,6 +89,7 @@
 }
 
 .cert-list{
+    box-sizing: border-box;
     width: 100%;
     align-items: center;
     justify-content: center;

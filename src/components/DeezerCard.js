@@ -41,13 +41,12 @@ function DeezerCard() {
             <img src={track ? track.album.cover_big : "https://static-00.iconduck.com/assets.00/deezer-icon-512x512-2p8epo3y.png"} alt="thumbnail" className={track ? "thumbnail" : "thumbnail not"}></img>
             {track ? (
                 <div className="card-info-container">
-                    <p>Currently Listening</p>
+                    <h3>Currently Listening</h3>
                     <p>{`${track.artist.name}-${track.title}`}</p>
                 </div>
             ) : (
                 <div className="card-info-container not">
-                    <p>Not</p>
-                    <p>Currently Listening</p>
+                    <h3>Not Listening</h3>
                 </div>
             )}
             <img src="https://static-00.iconduck.com/assets.00/deezer-icon-512x512-2p8epo3y.png" alt="logo" className={track ? "deezer-logo" : "deezer-logo hidden"}></img>

@@ -67,7 +67,7 @@ export const AboutMe = ({listItemData}) => {
 						</p>
 						<a id='CityLink' href='https://www.google.com/maps/place/%D0%9D%D0%BE%D0%B2%D0%B8+%D0%A1%D0%B0%D0%B4' target='_blank' rel="noreferrer">
 							<img id='planet' src={PlanetSVG} alt='planet'/>
-							Novi Sad, Serbia
+							<p>Novi Sad, Serbia</p>
 						</a>
 						<p>
 							Born on September 25, 1994, I began my career as a skilled chef, delighting palates with my culinary creations.
@@ -75,16 +75,15 @@ export const AboutMe = ({listItemData}) => {
 						<p>
 							Driven by curiosity, I ventured into programming, discovering a new passion. Despite lacking formal education, I dedicated myself to self-learning, mastering various languages and technologies.
 						</p>
-						<p>
+						<h3>
 							I have learned from a variety of sources like YouTube and SoloLearn.
-						</p>
+						</h3>
 						<p>
 							Combining my background as a chef with programming, I embrace challenges, finding joy in creating innovative solutions. My diverse experiences enrich my problem-solving approach, driving me to make a positive impact.Through continuous learning and an entrepreneurial spirit, I strive for greatness, inspiring others to follow their passions. 
 						</p>
 					</div>
 					<div className='certificates-sec'>
 						<h1>CERTIFICATES</h1>
-						<p className='pick-lang-title'>Pick a language</p>
 						<div className='lang-buttons'>
 							<button className={value === 'HTML' ? 'selected' : ''} onClick={()=>certChange('HTML')}>HTML</button>
 							<button className={value === 'CSS' ? 'selected' : ''} onClick={()=>certChange('CSS')}>CSS</button>
