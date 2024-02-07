@@ -3,7 +3,6 @@ import React from 'react';
 import './Home.css';
 
 import BlogTopicCard from '../components/BlogTopicCard/BlogTopicCard';
-import SocialIcon from '../components/socialIcon';
 
 import GithubSVG from '../Resources/SocialSVGs/GitHub.svg';
 import BlogSVG from '../Resources/SocialSVGs/BlogSVG.svg';
