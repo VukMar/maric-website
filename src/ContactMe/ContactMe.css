@@ -1,9 +1,10 @@
 @import url('../Animations.css');
 .contact-me{
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 20px;
     border-radius: 10px;
     width: 100%;
@@ -94,6 +95,7 @@
 
 .contact-social{
     width: 95%;
+    max-width: 600px;
     padding-top: 20px;
     display: flex;
     flex-direction: row;
@@ -104,10 +106,6 @@
     padding-bottom: 40px;
     font-size: 20px;
     text-align: center;
-}
-.contact-logo{
-    width: 200px;
-    align-self: center;
 }
 .contact-info{
     display: flex;

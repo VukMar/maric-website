@@ -107,12 +107,7 @@ const ContactMe = () => {
 					</button>
 				</div>
 			</div>
-			<img className='contact-logo' src={Logo} alt='logo-contact'/>
 			<div className='contact-social'>
-				<div className='contact-info'>
-					<p>You can contact me directly using my email:</p>
-					<code>vuk.s.maric@gmail.com</code>
-				</div>
 				<div className='contact-info'>
 					<p>Find me on GitHub and LinkedIn!</p>
 					<SocialIcon href={'https://www.linkedin.com/in/vuk-maric-50367124a/'} icon={likedinSVG} text={'LinkedIn - Vuk Maric'}/>

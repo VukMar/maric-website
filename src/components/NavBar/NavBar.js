@@ -48,7 +48,6 @@ const NavBar = () =>{
     };
 
     useEffect(() => {
-        document.body.style.overflow = expanded? 'hidden' :  'auto';
         if(navRef !== null){
             if(navRef.current !== null || navRef.current !== undefined){
                 navRef.current.style.width = expanded? `90%` : '0px';

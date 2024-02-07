@@ -3,18 +3,23 @@
 
 
 .tooltip {
-    position: fixed;
+    box-sizing: border-box;
+    position: absolute;
     background-color: rgba(128, 128, 128, 0.683);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
     text-align: center;
+    text-wrap: nowrap;
     pointer-events: none;
     color: white;
-    max-width: 200px;
+    width: max-content;
+    transition-duration: 0.6s;
+    overflow: hidden;
 }
 
 .techItem{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,16 +58,7 @@
 
 @media screen and (max-width: 768px) {
     .tooltip {
-        position: relative;
         display: none;
-        background-color: rgba(128, 128, 128, 0.683);
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 14px;
-        text-align: center;
-        pointer-events: none;
-        color: white;
-        max-width: 200px;
     }
     
     .techItem{
