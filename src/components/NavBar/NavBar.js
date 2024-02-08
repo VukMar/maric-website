@@ -5,7 +5,6 @@ import './NavBar.css';
 
 import HomeSVG from '../../Resources/Home.svg';
 import AboutMeSVG from '../../Resources/AboutMe.svg';
-import ContactMeSVG from '../../Resources/ContactMe.svg';
 import MyProjectsSVG from '../../Resources/Blog.svg';
 import BurgerButton from "../BurgerButton/BurgerButton";
 
@@ -42,9 +41,12 @@ const NavBar = () =>{
         setExpanded(!expanded);
     };
 
-    const handleClicks = (link) => {
+    const handleClicks = (e,link) => {
         if (windowWidth < 1000) handleExpanded();
-        setSelectedLink(link);
+        if(link !== "/ContactMe"){
+            setSelectedLink(link);
+        }
+
     };
 
     useEffect(() => {
@@ -63,21 +65,21 @@ const NavBar = () =>{
         <nav ref={navRef} id="nav">
             <div className="link-list">
                 <BurgerButton widnowWidth={windowWidth} handleExpanded={handleExpanded} expanded={expanded}/>
-				<Link className={selectedLink === '/' ? 'selected' : ''} onClick={() => handleClicks('/')} to="/">
+				<Link className={selectedLink === '/' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/')} to="/">
 					<img className={selectedLink === '/' ? 'selected' : ''} src={HomeSVG} alt="nav-icon"/>
 					Home
 				</Link>
-				<Link className={selectedLink === '/AboutMe' ? 'selected' : ''} onClick={() => handleClicks('/AboutMe')} to="/AboutMe">
-					<img className={selectedLink === '/AboutMe' ? 'selected' : ''} src={AboutMeSVG} alt="nav-icon"/>
-					About Me
-					</Link>
-				<Link className={selectedLink === '/ContactMe' ? 'selected' : ''} onClick={() => handleClicks('/ContactMe')} to="/ContactMe">
-					<img className={selectedLink === '/ContactMe' ? 'selected' : ''} src={ContactMeSVG} alt="nav-icon"/>
-					Contact Me
-					</Link>
-				<Link className={selectedLink === '/Blog' ? 'selected' : ''} onClick={() => handleClicks('/Blog')} to="/Blog">
+				<Link className={selectedLink === '/Blog' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/Blog')} to="/Blog">
 					<img className={selectedLink === '/Blog' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
 					Blog
+				</Link>
+				<Link className={selectedLink === '/AboutMe' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/AboutMe')} to="/AboutMe">
+					<img className={selectedLink === '/AboutMe' ? 'selected' : ''} src={AboutMeSVG} alt="nav-icon"/>
+					About Me
+				</Link>
+                <Link className={selectedLink === '/Projects' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/Projects')} to="/Projects">
+					<img className={selectedLink === '/Projects' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
+					Projects
 				</Link>
             </div>
 		</nav>

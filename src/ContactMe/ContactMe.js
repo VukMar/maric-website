@@ -3,16 +3,13 @@ import React, { useEffect, useState } from 'react';
 
 import './ContactMe.css';
 
-import Logo from '../Resources/MaricLogo.png';
 import HandwaveSVG from '../Resources/Hand-wave.svg';
 
-import likedinSVG from '../Resources/SocialSVGs/linkedin.svg';
-import GitHubSVG from '../Resources/SocialSVGs/GitHub.svg';
-import SocialIcon from '../components/socialIcon';
 import LoadingScreen from '../components/Loading';
+import ContactMeSVG from '../Resources/ContactMe.svg';
 
 
-const ContactMe = () => {
+const ContactMe = React.forwardRef((props, ref) => {
     
 	const [UserInfo, setUserInfo] = useState({name: '', email: ''});
   	const [isButtonEnabled, setIsButtonEnabled] = useState(false);
@@ -70,52 +67,71 @@ const ContactMe = () => {
 		}
 		setUserInfo({name: '', email: ''});
 	};
-	
-	  
 
     return (
-        <div className='contact-me'>
-				<LoadingScreen
-					Text={'Trying to send email'} 
-					isLoading={SendingEmail.sending}
-				/>
-				<LoadingScreen 
-					isNotification={true} 
-					Text={'Email sent!'} 
-					isLoading={SendingEmail.sent}
-					setIsLoading={() => setSendingEmail({sending: false, sent: false, failed: false})}
-				/>
-				<LoadingScreen 
-					isNotification={true} 
-					Text={'Email sending failed!'} 
-					isLoading={SendingEmail.failed}
-					setIsLoading={() => setSendingEmail({sending: false, sent: false, failed: false})}
-				/>
+        <>
+		<LoadingScreen
+			Text={'Trying to send email'} 
+			isLoading={SendingEmail.sending}
+		/>
+		<LoadingScreen 
+			isNotification={true} 
+			Text={'Email sent!'} 
+			isLoading={SendingEmail.sent}
+			setIsLoading={() => setSendingEmail({sending: false, sent: false, failed: false})}
+		/>
+		<LoadingScreen 
+			isNotification={true} 
+			Text={'Email sending failed!'} 
+			isLoading={SendingEmail.failed}
+			setIsLoading={() => setSendingEmail({sending: false, sent: false, failed: false})}
+		/>
 			
-			<div className={
-				(SendingEmail.sending || SendingEmail.sent || SendingEmail.failed)? 'say-hello hidden' : 'say-hello'
-			}>
-				<h1>Send me a message!</h1>
-				<div className='input-fields'>
-					<label htmlFor='name'>Name</label>
-					<input value={UserInfo.name} autoComplete='on' name='name' id='name' onChange={(ev) => getValue(ev)} type='text' ></input>
-					<label htmlFor='email'>Email</label>
-					<input id='email' value={UserInfo.email} onChange={(ev) => getValue(ev)} name='email'  type='email' autoComplete='on'></input>
-					<button onClick={sendEmail} className='run-code-btn' disabled={!isButtonEnabled}>
-						Say Hello
-						<img src={HandwaveSVG} alt='Hand-wave'/>
-					</button>
-				</div>
+		<div 
+			className={
+				(SendingEmail.sending || SendingEmail.sent || SendingEmail.failed)? 
+				'say-hello hidden' : 'say-hello'
+			}
+			id='contact-me'
+			ref={ref}
+		>
+			<img width={100} src={ContactMeSVG} alt='mail'/>
+			<h1>Send me a message!</h1>
+			<div className='input-fields'>
+				<label htmlFor='name'>Name</label>
+				<input 
+					value={UserInfo.name} 
+					autoComplete='on' 
+					name='name' 
+					id='name' 
+					onChange={(ev) => getValue(ev)} 
+					type='text'
+				/>
+				<label 
+					htmlFor='email'
+				>
+					Email
+				</label>
+				<input 
+					id='email' 
+					value={UserInfo.email} 
+					onChange={(ev) => getValue(ev)} 
+					name='email'  
+					type='email' 
+					autoComplete='on'
+				/>
+				<button 
+					onClick={sendEmail} 
+					className='run-code-btn' 
+					disabled={!isButtonEnabled}
+				>
+					Say Hello
+					<img src={HandwaveSVG} alt='Hand-wave'/>
+				</button>
 			</div>
-			<div className='contact-social'>
-				<div className='contact-info'>
-					<p>Find me on GitHub and LinkedIn!</p>
-					<SocialIcon href={'https://www.linkedin.com/in/vuk-maric-50367124a/'} icon={likedinSVG} text={'LinkedIn - Vuk Maric'}/>
-					<SocialIcon href={'https://github.com/VukMar'} icon={GitHubSVG} text={'GitHub - @VukMar'}/>
-				</div>
-			</div>
-        </div>
+		</div>
+        </>
     );
-};
+});
 
 export default ContactMe;
