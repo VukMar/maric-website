@@ -28,7 +28,7 @@ const Home = ({latestBlog}) => {
 					<h3>BLOG</h3>
 					<p>Personal Blog to help others and share the fun of programming!</p>
 				</a>
-				<a className='home-glimpse' href='/Blog'>
+				<a className='home-glimpse' href='https://github.com/VukMar' rel='noreferrer' target='_blank'>
 					<img width={80} src={GithubSVG}/>
 					<h3>GITHUB</h3>
 					<p>Get a glipse of my code by diving into one ( or more 🙂) of my repositories!</p>
