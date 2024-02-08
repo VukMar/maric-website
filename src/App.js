@@ -1,12 +1,11 @@
 // src/App.js
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 import './App.css';
 
 import Home from './Home/Home';
 import { AboutMe } from './AboutMe/AboutMe';
-import ContactMe from './ContactMe/ContactMe';
 import Blog from './Blog/Blog';
 import TopicPage from './Blog/BlogTopicPage';
 import DeezerCard from './components/DeezerCard';
@@ -25,6 +24,7 @@ import reactSVG from './LangSVGs/react.svg';
 import phpSVG from './LangSVGs/php.svg';
 import cppSVG from './LangSVGs/cpp.svg';
 import NavBar from './components/NavBar/NavBar';
+import Projects from './Projects/Projects';
 
 function App(){
 
@@ -42,6 +42,9 @@ function App(){
 	const [TopicList, setTopicList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [LatestBlog, setLatestBlog] = useState(null);
+	const [toScrollToContact, setToScrollToContact] = useState(false);
+
+	const contactRef = useRef(null);
 
 
 	useEffect(() => {
@@ -52,7 +55,7 @@ function App(){
 		return (
 			<Route
 			key={index}
-			path={`Blog/${topic.title}`}
+			path={`Blog/${topic.id}`}
 			element={<TopicPage topic={topic}/>}
 			/>
 		)
@@ -67,31 +70,49 @@ function App(){
 	  
 		const data = await response.json();
 		setTopicList(data);
-		const latest = findLatestBlog(data);
-		setLatestBlog(latest);
+		findLatestBlog(data);
 		setIsLoading(false);
 	}
 
-	function findLatestBlog(blogList) {
-		if (!blogList || blogList.length === 0) {
-		  	return null;
+	function findLatestBlog(topicList) {
+		const sortedBlogs = sortByDate(topicList);
+		console.log(sortedBlogs[0]);
+		setLatestBlog(sortedBlogs[0]);
+	}
+
+	function sortByDate(topicList){
+		if (!topicList || topicList.length === 0) {
+			return null;
 		}
 		
-		const sortedBlogs = blogList.sort((a, b) => {
-		  	const dateA = parseDate(a.date);
-		  	const dateB = parseDate(b.date);
-	  
+		const sortedBlogs = topicList.sort((a, b) => {
+				const dateA = parseDate(a.date);
+				const dateB = parseDate(b.date);
+		
 			return dateB - dateA;
 		});
-	  
-		const latestBlog = sortedBlogs[0];
-	  
-		return latestBlog;
+
+		return sortedBlogs;
 	}
 	
 	function parseDate(dateString) {
 		const [day, month, year] = dateString.split('.').map(Number);
 		return new Date(year, month - 1, day);
+	}
+
+	function sortByViews(topicList){
+		if (!topicList || topicList.length === 0) {
+			return null;
+		}
+		
+		const sortedBlogs = topicList.sort((a, b) => {
+				const dateA = a.views;
+				const dateB = b.views;
+		
+			return dateB - dateA;
+		});
+
+		return sortedBlogs;
 	}
 
 
@@ -100,14 +121,15 @@ function App(){
 		<LoadingScreen Text={'Loading'} isLoading={isLoading}/>
       	<div className="app">
 			<img className='MainLogo' src={Logo} alt='main-logo'/>
+
 			<NavBar />
-			
 
 			<Routes>
-				<Route path="/" element={<Home listItemData={listItemData} latestBlog={LatestBlog}/>} />
+				<Route path="/" element={<Home contactRef={contactRef} latestBlog={LatestBlog}/>} />
+				<Route path="/:scrollToElementId" element={<Home />} />
 				<Route path="/AboutMe" element={<AboutMe listItemData={listItemData} />} />
-				<Route path="/ContactMe" element={<ContactMe />} />
 				<Route path="/Blog" element={<Blog  topicList={TopicList}/>}/>
+				<Route path="/Projects" element={<Projects/>}/>
 				{topicRoutes}
 			</Routes>
 
