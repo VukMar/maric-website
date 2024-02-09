@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import BlogTopicCard from "../components/BlogTopicCard/BlogTopicCard";
 import './Blog.css'
 
+import {sortByDate,sortByViews} from '../logic/sorting';
+
 
 const Blog = ({topicList}) => {
 
@@ -10,11 +12,12 @@ const Blog = ({topicList}) => {
 	const [KeywordSelected, setSelectedKeyword] = useState('');
 	const [FilteredTopics, setFilteredTopics] = useState([]);
 	const [FilterText, setFIlterText] = useState('');
+	const [SortOrder,setSortOrder] = useState('date');
 
 	useEffect(() => {
 		if(topicList.length > 0){
 			generateKeyWords();
-			setFilteredTopics(topicList);
+			setFilteredTopics(updateTopicOrder(topicList));
 		}
 	}, [topicList]);
 
@@ -35,19 +38,27 @@ const Blog = ({topicList}) => {
 
 	const handleFilter = (value) => {
 		setSelectedKeyword(value);
+		let topics = [];
 		if(value.length >= 3){
-			let topics = [];
 			topicList.map(topic => {
 				if(AincludesB(topic.title, value) || tagsMatch(topic.tags, value)){
 					topics.push(topic);
 				}
 			})
-			setFilteredTopics(topics);
 		}
 		else{
-			setFilteredTopics(topicList);
+			topics = topicList;
 		}
+		setFilteredTopics(updateTopicOrder(topics));
 		setFIlterText(value);
+	}
+
+	function updateTopicOrder(topics){
+		switch(SortOrder){
+			case 'date':
+				return sortByDate(topics);
+				break;
+		}
 	}
 
 	const tagsMatch = (tags, keyword) => {

@@ -8,8 +8,9 @@ import GithubSVG from '../Resources/SocialSVGs/GitHub.svg';
 import BlogSVG from '../Resources/SocialSVGs/BlogSVG.svg';
 import ProjectSVG from '../Resources/SocialSVGs/ProjectSVG.svg';
 import ContactMe from '../ContactMe/ContactMe';
+import BlogTopicCardMini from '../components/BlogTopicCard/BlogTopicCarMini';
 
-const Home = ({latestBlog, contactRef}) => {
+const Home = ({latestBlog, popularBlogs}) => {
 
 	return (
 		<div className="home">
@@ -41,11 +42,21 @@ const Home = ({latestBlog, contactRef}) => {
 					</a>
 				</div>
 				<p className='p'>I'm passionate about programming, and I strive to learn something new every day!</p>
-				<h2 className='latest-blog-heading'>LATEST BLOG</h2>
+				<h2 className='home-content-heading'>LATEST BLOG</h2>
 				<div className='latest-blog-container'>
 					{latestBlog !== null && latestBlog !== undefined?(
+						<>
 						<BlogTopicCard topic={latestBlog} id={1001} />
+						</>
 						) : (<></>)}
+				</div>
+				<h2 className='home-content-heading'>POPULAR BLOGS</h2>
+				<div className='popular-blogs-container'>
+					{popularBlogs.length !== 0? (
+						popularBlogs.map((el,index) => (
+							<BlogTopicCard topic={el} id={200+index}/>
+						))
+					) : (<></>)}
 				</div>
 				<ContactMe />
 			</div>

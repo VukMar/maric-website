@@ -1,6 +1,6 @@
 // src/App.js
-import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import './App.css';
 
@@ -13,7 +13,6 @@ import DeezerCard from './components/DeezerCard';
 import likedinSVG from './Resources/SocialSVGs/linkedin.svg';
 import GitHubSVG from './Resources/SocialSVGs/GitHub.svg';
 
-import Logo from './Resources/MaricLogo.png'
 import LoadingScreen from './components/Loading';
 
 import htmlSVG from './LangSVGs/html.svg';
@@ -25,6 +24,8 @@ import phpSVG from './LangSVGs/php.svg';
 import cppSVG from './LangSVGs/cpp.svg';
 import NavBar from './components/NavBar/NavBar';
 import Projects from './Projects/Projects';
+
+import {sortByDate, sortByViews} from './logic/sorting';
 
 function App(){
 
@@ -40,11 +41,10 @@ function App(){
   
   	
 	const [TopicList, setTopicList] = useState([]);
+	const [PopularBlogs, setPopularBlogs] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [LatestBlog, setLatestBlog] = useState(null);
-	const [toScrollToContact, setToScrollToContact] = useState(false);
-
-	const contactRef = useRef(null);
+	const [routes, setRoutes] = useState();
 
 
 	useEffect(() => {
@@ -69,50 +69,35 @@ function App(){
 		}
 	  
 		const data = await response.json();
+		let thisRoutes = ['/', '/AboutMe', '/Blog', '/Projects'];
+		data.forEach(el => {
+			thisRoutes.push(`/Blog/${el.id}`);
+		})
+		setRoutes(thisRoutes);
 		setTopicList(data);
 		findLatestBlog(data);
+		getPopularBlogs(data);
 		setIsLoading(false);
 	}
 
 	function findLatestBlog(topicList) {
 		const sortedBlogs = sortByDate(topicList);
-		console.log(sortedBlogs[0]);
 		setLatestBlog(sortedBlogs[0]);
 	}
 
-	function sortByDate(topicList){
-		if (!topicList || topicList.length === 0) {
-			return null;
+	function getPopularBlogs(topicList){
+		const sortedBlogs = sortByViews(topicList);
+		let popular = [];
+		if(sortedBlogs.length < 3){
+			sortedBlogs.forEach(el => {
+				popular.push(el);
+			});
+		}else{
+			for(let i = 0; i < 3; i++){
+				popular.push(sortedBlogs[i]);
+			}
 		}
-		
-		const sortedBlogs = topicList.sort((a, b) => {
-				const dateA = parseDate(a.date);
-				const dateB = parseDate(b.date);
-		
-			return dateB - dateA;
-		});
-
-		return sortedBlogs;
-	}
-	
-	function parseDate(dateString) {
-		const [day, month, year] = dateString.split('.').map(Number);
-		return new Date(year, month - 1, day);
-	}
-
-	function sortByViews(topicList){
-		if (!topicList || topicList.length === 0) {
-			return null;
-		}
-		
-		const sortedBlogs = topicList.sort((a, b) => {
-				const dateA = a.views;
-				const dateB = b.views;
-		
-			return dateB - dateA;
-		});
-
-		return sortedBlogs;
+		setPopularBlogs(popular);
 	}
 
 
@@ -120,13 +105,11 @@ function App(){
     <Router>
 		<LoadingScreen Text={'Loading'} isLoading={isLoading}/>
       	<div className="app">
-			<img className='MainLogo' src={Logo} alt='main-logo'/>
 
 			<NavBar />
 
 			<Routes>
-				<Route path="/" element={<Home contactRef={contactRef} latestBlog={LatestBlog}/>} />
-				<Route path="/:scrollToElementId" element={<Home />} />
+				<Route path="/" element={<Home popularBlogs={PopularBlogs} latestBlog={LatestBlog}/>} />
 				<Route path="/AboutMe" element={<AboutMe listItemData={listItemData} />} />
 				<Route path="/Blog" element={<Blog  topicList={TopicList}/>}/>
 				<Route path="/Projects" element={<Projects/>}/>
