@@ -1,10 +1,10 @@
 import React from "react";
 
-import './BlogTopicCard.css';
+import './BlogTopicCardMini.css';
 
 import EyeSVG from '../../Resources/EyeSVG.svg';
 
-const BlogTopicCard = ({topic,id}) => {
+const BlogTopicCardMini = ({topic,id}) => {
 
     const updateViews = async (e) => {
         e.preventDefault();
@@ -23,23 +23,22 @@ const BlogTopicCard = ({topic,id}) => {
             console.error(responseData.error)
         }
 
-        window.location.href = `/blog/${topic.id}`;
+        window.location.href = `/Blog/${topic.id}`;
         
     }
 
     return(
-        <a href={`/Blog/${topic.id}`} key={id} onClick={updateViews} className="blog-topic-card">
-            <img src={topic.cover} alt="topic-cover" />
-            <h2 className="card-topic-title">{topic.title}</h2>
-            <h4 className="card-topic-views">Read time: {topic.readTime}</h4>
-            <h4 className="card-topic-views">
+        <a href={`/Blog/${topic.id}`} key={id} onClick={updateViews} className="mini-blog-topic-card">
+            <img src={topic.cover} alt="mini-topic-cover" />
+            <h3 className="mini-card-topic-title">{topic.title}</h3>
+            <h4 className="mini-card-topic-date">{topic.date}</h4>
+            <p className="mini-card-topic-views">Read time: {topic.readTime}</p>
+            <p className="mini-card-topic-views">
                 Views: {topic.views ?? 0}
                 <img style={{width: '20px'}} src={EyeSVG} alt="eye"/>
-            </h4>
-            <h3 className="card-topic-date">{topic.date}</h3>
-            <p className="card-topic-info">{topic.shortdesc}</p>
+            </p>
         </a>
     )
 }
 
-export default BlogTopicCard;
+export default BlogTopicCardMini;

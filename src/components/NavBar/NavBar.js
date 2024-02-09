@@ -8,6 +8,8 @@ import AboutMeSVG from '../../Resources/AboutMe.svg';
 import MyProjectsSVG from '../../Resources/Blog.svg';
 import BurgerButton from "../BurgerButton/BurgerButton";
 
+import Logo from '../../Resources/MaricLogo.png'
+
 const NavBar = () =>{
 
     const [selectedLink, setSelectedLink] = useState(null);
@@ -60,7 +62,8 @@ const NavBar = () =>{
     },[expanded])
 
     return(
-        <>
+        <div className="nav-container">
+        <img className='MainLogo' src={Logo} alt='main-logo'/>
         <BurgerButton widnowWidth={windowWidth} handleExpanded={handleExpanded} expanded={expanded}/>
         <nav ref={navRef} id="nav">
             <div className="link-list">
@@ -83,7 +86,7 @@ const NavBar = () =>{
 				</Link>
             </div>
 		</nav>
-        </>
+        </div>
     )
 }
 
