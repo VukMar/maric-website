@@ -12,7 +12,7 @@ const Blog = ({topicList}) => {
 	const [KeywordSelected, setSelectedKeyword] = useState('');
 	const [FilteredTopics, setFilteredTopics] = useState([]);
 	const [FilterText, setFIlterText] = useState('');
-	const [SortOrder,setSortOrder] = useState('date');
+	const [SortOrder,setSortOrder] = useState('date-from-latest');
 
 	useEffect(() => {
 		if(topicList.length > 0){
@@ -39,14 +39,18 @@ const Blog = ({topicList}) => {
 	const handleFilter = (value) => {
 		setSelectedKeyword(value);
 		let topics = [];
-		if(value.length >= 3){
-			topicList.map(topic => {
-				if(AincludesB(topic.title, value) || tagsMatch(topic.tags, value)){
-					topics.push(topic);
-				}
-			})
-		}
-		else{
+		if(value !== null && value !== undefined){
+			if(value && value.length >= 3){
+				topicList.forEach(topic => {
+					if(AincludesB(topic.title, value) || tagsMatch(topic.tags, value)){
+						topics.push(topic);
+					}
+				})
+			}
+			else{
+				topics = topicList;
+			}
+		}else{
 			topics = topicList;
 		}
 		setFilteredTopics(updateTopicOrder(topics));
@@ -55,8 +59,17 @@ const Blog = ({topicList}) => {
 
 	function updateTopicOrder(topics){
 		switch(SortOrder){
-			case 'date':
+			case 'date-from-oldest':
 				return sortByDate(topics);
+				break;
+			case 'date-from-latest':
+				return sortByDate(topics);
+				break;
+			case 'views-from-lowest':
+				return sortByViews(topics);
+				break;
+			case 'views-from-highest':
+				return sortByViews(topics);
 				break;
 		}
 	}
@@ -98,7 +111,7 @@ const Blog = ({topicList}) => {
 				</div>
 			</div>
 			<div className="blog-topics">
-				{FilteredTopics.length > 0 ? (
+				{FilteredTopics && FilteredTopics.length > 0 ? (
 						FilteredTopics.map((topic, index) => (
 							<BlogTopicCard topic={topic} id={index}/>
 							))
