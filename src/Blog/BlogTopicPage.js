@@ -16,8 +16,12 @@ function TopicPage( {topic} ){
                     <h3>{topic.date}</h3>
                 </div>
             </div>
-            <MarkdownWithPrism markdownContent={topic.md} />
-            
+            <div className="blog-contents">
+                <MarkdownWithPrism markdownContent={topic.md} />
+                <aside>
+                    
+                </aside>
+            </div>
         </div>
     )
 

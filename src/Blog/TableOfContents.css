@@ -1,0 +1,7 @@
+.table-of-contents{
+    display: none;
+    box-sizing: border-box;
+    padding: 10px;
+    border-left: 2px solid white;
+    top: 0;
+}

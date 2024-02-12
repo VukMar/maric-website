@@ -2,7 +2,7 @@
 
 .blog-topic-page{
     box-sizing: border-box;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -15,6 +15,7 @@
 }
 
 .blog-topic-title{
+    box-sizing: border-box;
     width: 100%;
     overflow: hidden;
     background-color: rgba(128, 0, 128, 0.5);
@@ -36,66 +37,109 @@
     object-fit: cover;
 }
 
+.blog-contents{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
 .blog-topic-section{
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 700px;
     padding-left: 10px;
     padding-bottom: 10px;
 }
-.blog-topic-section li{
-    margin-left: 15px;
+
+.blog-topic-section img{
+    width: 95%;
+    max-width: 800px;
+    object-fit: cover;
 }
-.blog-topic-section h2{
-    color: aqua;
-    padding-bottom: 5px;
-    border-bottom: 5px solid rgba(128, 0, 128, 0.6);
-}
-.paragraph{
+
+.code-header {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    font-size: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 10px 0px 10px;
 }
+
+.code-header h3{
+    margin: 0;
+}
+  
+.copy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.copy-button img{
+    width: 30px;
+}
+  
+
+.copy-button:hover img{
+    width: 30px;
+    filter: drop-shadow(0px 0px 4px white);
+}
+
 .blog-topic-page pre{
-    font-family: 'Source Code Pro', monospace;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
     color:#eee;
     background-color: rgba(34, 34, 34, 0.8);
-    width: fit-content;
-    padding: 10px;
     border: 1px solid white;
-    border-radius: 10px;
-    width: 100%;
-    overflow-y: auto;
+    width: 95%;
     scrollbar-width:thin;
     scrollbar-color: #888 #eee;
     font-size: 14px;
+    border-radius: 10px;
 }
+
+.blog-topic-page .inner-pre{
+    width: 100%;
+    border-radius: 0px 0px 10px 10px;
+    margin-bottom: 0;
+    border: none;
+    border-top: 2px solid white;
+}
+
 .blog-topic-page pre::-webkit-scrollbar {
-    height: 4px; /* Adjust the scrollbar width as needed */
+    height: 4px;
     border-radius: 4px;
 }
 
 .blog-topic-page pre::-webkit-scrollbar-thumb {
-    background-color: #888; /* Color of the scrollbar thumb */
+    background-color: #888;
     border-radius: 10px;
 }
 .blog-topic-page pre::-webkit-scrollbar-thumb:hover {
-    background-color: #eee; /* Color of the scrollbar thumb on hover */
+    background-color: #eee;
 }
-.blog-link{
+.blog-topic-page a{
     text-decoration: none;
     border-bottom: purple 2px solid;
     color: aqua;
     transition-duration: 0.6s;
 }
-.blog-link:hover{
+.blog-topic-page a:hover{
     color:white;
 }
-.paragraph-image{
-    width: 100%;
-}
-.paragraph-image img{
-    width: 100%;
-    object-fit: cover;
-}
+
 @media (min-width: 1025px) and (max-width: 1400px) {
     .blog-topic-title-text h1{
         font-size: 28px;
@@ -105,9 +149,6 @@
     }
     .blog-topic-title-text h3{
         font-size: 20px;
-    }
-    .blog-topic-section h2{
-        font-size: 22px;
     }
     .paragraph{
         font-size: 16px;
@@ -123,9 +164,6 @@
     }
     .blog-topic-title-text h3{
         font-size: 18px;
-    }
-    .blog-topic-section h2{
-        font-size: 20px;
     }
     .blog-topic-section{
         width: 80%;
@@ -145,9 +183,6 @@
     .blog-topic-title-text h3{
         font-size: 14px;
     }
-    .blog-topic-section h2{
-        font-size: 16px;
-    }
     .blog-topic-section{
         width: 80%;
     }   
@@ -164,9 +199,6 @@
         font-size: 14px;
     }
     .blog-topic-title-text h3{
-        font-size: 14px;
-    }
-    .blog-topic-section h2{
         font-size: 14px;
     }
     .paragraph{
