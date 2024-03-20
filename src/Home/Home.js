@@ -38,7 +38,7 @@ const Home = ({latestBlog, popularBlogs}) => {
 					<a className='home-glimpse' href='/Projects'>
 						<img width={80} src={ProjectSVG}/>
 						<h3>PROJECTS</h3>
-						<p>Coming soon!</p>
+						<p>Explore a collection of projects crafted by me, showcasing the diverse technologies employed in their development.</p>
 					</a>
 				</div>
 				<p className='p'>I'm passionate about programming, and I strive to learn something new every day!</p>
