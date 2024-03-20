@@ -1,0 +1,32 @@
+.projects-page{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.projects-page h1{
+    margin-left: 10px;
+}
+
+.projects-page h3{
+    margin-left: 10px;
+}
+
+.projects-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    border-top: 2px solid white;
+    display: flex;
+}
+
+@media (max-width: 699px) {
+    .projects-container{
+        justify-content: center;
+    }
+}
