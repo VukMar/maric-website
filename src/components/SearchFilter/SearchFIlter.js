@@ -4,10 +4,14 @@ import "./SearchFilter.css";
 
 import {sortByDate,sortByViews} from '../../logic/sorting';
 
+import { useFilterInitiated } from './FilterInitiatedProvider';
+
 function SearchFilter ({content, setFilteredContent, SortOrder}) {
 
+	const { setFilterInitiated } = useFilterInitiated();
+
 	const [KeywordSelected, setSelectedKeyword] = useState('');
-	const [FilterText, setFIlterText] = useState('');
+	const [FilterText, setFilterText] = useState('');
 	const [Keywords, setKeywords] = useState([]);
 
 	useEffect(() => {
@@ -38,6 +42,7 @@ function SearchFilter ({content, setFilteredContent, SortOrder}) {
 		if(value !== null && value !== undefined){
             setSelectedKeyword(value);
 			if(value && value.length >= 3){
+				setFilterInitiated(true);
 				content.forEach(el => {
 					if(ArrayIncludesKeyword(sentenceToLowerArray(el.title), value) || ArrayIncludesKeyword(el.tags, value)){
 						filtered.push(el);
@@ -45,33 +50,35 @@ function SearchFilter ({content, setFilteredContent, SortOrder}) {
 				})
 			}
 			else{
-				console.log('No Value!');
+				setFilterInitiated(false);
 				filtered = content;
 			}
 		}else{
+			setFilterInitiated(false);
 			filtered = content;
 		}
+		console.log(filtered)
         if(SortOrder !== null){
-            setFilteredContent(updateTopicOrder(filtered));
+            setFilteredContent(updateOrder(filtered));
         }else{
             setFilteredContent(filtered)
         }
-		setFIlterText(value);
+		setFilterText(value);
 	}
 
-    function updateTopicOrder(content){
+    function updateOrder(List){
 		switch(SortOrder){
 			case 'date-from-oldest':
-				return sortByDate(content);
+				return sortByDate(List);
 				break;
 			case 'date-from-latest':
-				return sortByDate(content);
+				return sortByDate(List);
 				break;
 			case 'views-from-lowest':
-				return sortByViews(content);
+				return sortByViews(List);
 				break;
 			case 'views-from-highest':
-				return sortByViews(content);
+				return sortByViews(List);
 				break;
 		}
 	}
@@ -87,10 +94,13 @@ function SearchFilter ({content, setFilteredContent, SortOrder}) {
 	}
 
 	function ArrayIncludesKeyword(arr, keyword) {
-		return arr.some(el => wordsMatch(el, keyword));
+		return arr.some(el => wordsMatch(keyword, el));
 	}
 
 	function wordsMatch(KeywordSelected, word) {
+		if(KeywordSelected.length < 3){
+			return false;
+		}
 		const keywordLowerCase = KeywordSelected.toLowerCase();
 		const wordLowerCase = word.toLowerCase();
 	

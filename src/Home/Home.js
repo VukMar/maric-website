@@ -1,5 +1,5 @@
 // src/HelloPageOne.js
-import React, { useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './Home.css';
 
 import BlogTopicCard from '../components/BlogTopicCard/BlogTopicCard';
@@ -8,20 +8,50 @@ import GithubSVG from '../Resources/SocialSVGs/GitHub.svg';
 import BlogSVG from '../Resources/SocialSVGs/BlogSVG.svg';
 import ProjectSVG from '../Resources/SocialSVGs/ProjectSVG.svg';
 import ContactMe from '../ContactMe/ContactMe';
-import BlogTopicCardMini from '../components/BlogTopicCard/BlogTopicCarMini';
 
 const Home = ({latestBlog, popularBlogs}) => {
+
+	const AvatarRef = useRef(null);
+	const AvatarImgRef = useRef(null);
+	
+	function createAvatarStyle(){
+		let offset = 25;
+		const random = (min, max) => Math.floor(min + Math.random() * (max - min));
+		const remain = (n) => 100 - n;
+		let r = [];
+		for (let i = 0; i < 4; i++) {
+			let n = random(offset, remain(offset));
+			r.push(n);
+			r.push(remain(n));
+		}
+
+		let coordinates = `${r[0]}% ${r[1]}% ${r[2]}% ${r[3]}% / ${r[4]}% ${r[6]}% ${r[7]}% ${r[5]}%`;
+		if(AvatarRef && AvatarRef !== null && AvatarRef !== undefined){
+			AvatarRef.current.style.borderRadius = coordinates;
+		}
+		if(AvatarImgRef && AvatarImgRef !== null && AvatarImgRef !== undefined){
+		}
+	}
+
+	useEffect(() => {
+
+		const interval = setInterval(createAvatarStyle, 2000);
+	
+		return () => clearInterval(interval);
+	  }, []);
 
 	return (
 		<div className="home">
 			<div className='start-page'></div>
 			<div className='home-content'>
-				<div className='hello'>
-					Hello my name is
-					<div className='name'>
+				<div className='home-heading-container'>
+					<img id='home-avatar' ref={AvatarRef} src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
+					<div className='hello'>
+						Hello my name is
+						<div className='name'>
+						</div>
 					</div>
 				</div>
-				<img id='Avatar' src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
 				<h3 className='h3'>I invite you to explore my website to learn more about my journey in the world of programming.</h3>
 				<h2>Get a glimpse of what i do!</h2>
 				<div className='glimpse-div'>
@@ -54,7 +84,7 @@ const Home = ({latestBlog, popularBlogs}) => {
 				<div className='popular-blogs-container'>
 					{popularBlogs.length !== 0? (
 						popularBlogs.map((el,index) => (
-							<BlogTopicCard topic={el} id={200+index}/>
+							<BlogTopicCard key={index} topic={el} id={200+index}/>
 						))
 					) : (<></>)}
 				</div>

@@ -53,7 +53,7 @@ export const AboutMe = ({listItemData}) => {
 				<div className='avatarSec'>
 					<img id='Avatar' src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
 					<div className='techItemList'>
-						<h3 style={{width: '100%', textAlign: 'center'}}>Technologies i use:</h3>
+						<h3 style={{width: '100%', textAlign: 'center'}}>Skills:</h3>
 						{listItemData.map((item) => (
           					<ListItem key={item.id} svgSrc={item.svgSrc} text={item.text} />
         				))}
