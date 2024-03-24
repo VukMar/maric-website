@@ -39,12 +39,13 @@ function SearchFilter ({content, setFilteredContent, SortOrder}) {
             setSelectedKeyword(value);
 			if(value && value.length >= 3){
 				content.forEach(el => {
-					if(AincludesB(el.title, value) || tagsMatch(el.tags, value)){
+					if(ArrayIncludesKeyword(sentenceToLowerArray(el.title), value) || ArrayIncludesKeyword(el.tags, value)){
 						filtered.push(el);
 					}
 				})
 			}
 			else{
+				console.log('No Value!');
 				filtered = content;
 			}
 		}else{
@@ -75,27 +76,25 @@ function SearchFilter ({content, setFilteredContent, SortOrder}) {
 		}
 	}
 
-    const tagsMatch = (tags, keyword) => {
-        if(tags !== null && tags !== undefined){
-            const tagsArray = Array.isArray(tags) ? tags : Object.values(tags);
-            tagsArray.forEach(tag => {
-                return wordsMatch(tag, keyword);
-            });
-        }
+	function sentenceToLowerArray(sentence) {
+		// Convert the sentence to lowercase
+		const lowerCaseSentence = sentence.toLowerCase();
+		
+		// Split the lowercase sentence into an array of words
+		const wordsArray = lowerCaseSentence.split(/\s+/);
+		
+		return wordsArray;
 	}
 
-	const wordsMatch = (a, b) => {
-		const cleanA = a.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
-		const cleanB = b.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
-		return cleanA === cleanB;
+	function ArrayIncludesKeyword(arr, keyword) {
+		return arr.some(el => wordsMatch(el, keyword));
 	}
-	function AincludesB(a, b) {
-		// Remove spaces, punctuation, and symbols from both strings and convert them to lowercase
-		const cleanA = a.replace(/[.,\/#!$%\^&\*;:{}=\-_`~() ]/g, '').toLowerCase();
-		const cleanB = b.replace(/[.,\/#!$%\^&\*;:{}=\-_`~() ]/g, '').toLowerCase();
-	  
-		// Check if cleanB includes cleanA
-		return cleanA.includes(cleanB);
+
+	function wordsMatch(KeywordSelected, word) {
+		const keywordLowerCase = KeywordSelected.toLowerCase();
+		const wordLowerCase = word.toLowerCase();
+	
+		return wordLowerCase.includes(keywordLowerCase);
 	}
 
     return(
