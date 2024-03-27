@@ -72,13 +72,13 @@ const NavBar = () =>{
 					<img className={selectedLink === '/' ? 'selected' : ''} src={HomeSVG} alt="nav-icon"/>
 					Home
 				</Link>
+                <Link className={selectedLink === '/AboutMe' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/AboutMe')} to="/AboutMe">
+					<img className={selectedLink === '/AboutMe' ? 'selected' : ''} src={AboutMeSVG} alt="nav-icon"/>
+					About Me
+				</Link>
 				<Link className={selectedLink === '/Blog' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/Blog')} to="/Blog">
 					<img className={selectedLink === '/Blog' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
 					Blog
-				</Link>
-				<Link className={selectedLink === '/AboutMe' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/AboutMe')} to="/AboutMe">
-					<img className={selectedLink === '/AboutMe' ? 'selected' : ''} src={AboutMeSVG} alt="nav-icon"/>
-					About Me
 				</Link>
                 <Link className={selectedLink === '/Projects' ? 'selected' : ''} onClick={(e) => handleClicks(e,'/Projects')} to="/Projects">
 					<img className={selectedLink === '/Projects' ? 'selected' : ''} src={MyProjectsSVG} alt="nav-icon"/>
