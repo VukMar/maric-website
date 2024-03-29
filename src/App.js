@@ -30,21 +30,19 @@ import {sortByDate, sortByViews} from './logic/sorting';
 function App(){
 
 	const listItemData = [
-		{ id: 1, svgSrc: htmlSVG, text: 'HTML - Hyper Text Markup Language' },
-		{ id: 2, svgSrc: cssSVG, text: 'CSS - Cascade Style Sheets' },
-		{ id: 3, svgSrc: jsSVG, text: 'JavaScript' },
-		{ id: 4, svgSrc: nodeJsSVG, text: 'nodeJs' },
-		{ id: 5, svgSrc: reactSVG, text: 'React' },
-		{ id: 6, svgSrc: phpSVG, text: 'PhP' },
-		{ id: 7, svgSrc: cppSVG, text: 'C++' },
+		{ id: 1, svgSrc: htmlSVG, text: 'HTML - Markup Language' },
+		{ id: 2, svgSrc: cssSVG, text: 'CSS - Style Sheets' },
+		{ id: 3, svgSrc: jsSVG, text: 'JS - Programming Language' },
+		{ id: 4, svgSrc: nodeJsSVG, text: 'Node.js - JavaScript Runtime' },
+		{ id: 5, svgSrc: reactSVG, text: 'React.js - JavaScript Library' },
+		{ id: 6, svgSrc: phpSVG, text: 'PHP - Server-side Language' },
+		{ id: 7, svgSrc: cppSVG, text: 'C++ - Programming Language' },
 	];
-  
-  	
+
 	const [TopicList, setTopicList] = useState([]);
 	const [PopularBlogs, setPopularBlogs] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [LatestBlog, setLatestBlog] = useState(null);
-	const [routes, setRoutes] = useState();
 
 
 	useEffect(() => {
@@ -73,7 +71,6 @@ function App(){
 		data.forEach(el => {
 			thisRoutes.push(`/Blog/${el.id}`);
 		})
-		setRoutes(thisRoutes);
 		setTopicList(data);
 		findLatestBlog(data);
 		getPopularBlogs(data);

@@ -1,13 +1,12 @@
 // src/HelloPageOne.js
-import React, { useState } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
 
 import './AboutMe.css';
 
-import ListItem from './ListItem';
-
 import PlanetSVG from '../Resources/Planet.svg';
 import { DisplayCert } from '../components/CertDisplay';
+import SkillList from '../components/SkillList/SkillList';
 
 export const AboutMe = ({listItemData}) => {
 	
@@ -52,12 +51,7 @@ export const AboutMe = ({listItemData}) => {
 			<div className='info'>
 				<div className='avatarSec'>
 					<img id='Avatar' src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
-					<div className='techItemList'>
-						<h3 style={{width: '100%', textAlign: 'center'}}>Technologies i use:</h3>
-						{listItemData.map((item) => (
-          					<ListItem key={item.id} svgSrc={item.svgSrc} text={item.text} />
-        				))}
-					</div>
+					<SkillList items={listItemData} text={"SKILLS"}/>
 					<img className='stats' src='https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=VukMar&theme=dark' alt='stats-github'></img>
 				</div>
 				<div className='mainInfo'>

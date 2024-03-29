@@ -5,10 +5,13 @@ import LoadingCard from "../components/loading-card/LoadingCard";
 import ProjectCard from "./ProjectCard";
 import SearchFilter from "../components/SearchFilter/SearchFIlter";
 
+import { useFilterInitiated } from '../components/SearchFilter/FilterInitiatedProvider';
+
 const Projects = () => {
 
+    const {filterInitiated} = useFilterInitiated();
+
     const [projects, setProjects] = useState([]);
-    const [keywords, setKeywords] = useState([]);
     const [filteredProjects, setFilteredProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -40,7 +43,7 @@ const Projects = () => {
         <div className="projects-page">
             <h1>Projects</h1>
             <h3>Explore a collection of projects crafted by me, showcasing the diverse technologies employed in their development.</h3>
-            <SearchFilter content={projects} Keywords={keywords} setFilteredContent={setFilteredProjects} SortOrder={null}/>
+            <SearchFilter content={projects} setFilteredContent={setFilteredProjects} SortOrder={null}/>
             <div className="projects-container">
                 {loading? (
                     <>
@@ -53,13 +56,14 @@ const Projects = () => {
                     filteredProjects.map((el,index) => (
                         <ProjectCard key={index} project={el} index={index} />
                     ))
-                ) : projects.length !== 0? (
+                ) : filterInitiated? (
+					<p>Sorry it appears that the search found no results! :(</p>
+				): projects.length !== 0? (
                     projects.map((el,index) => (
                         <ProjectCard key={index} project={el} index={index} />
                     ))
                 ) : (
-                    <p>{"No projects found! :("}</p>
-
+                    <></>
                 )}
             </div>
         </div>

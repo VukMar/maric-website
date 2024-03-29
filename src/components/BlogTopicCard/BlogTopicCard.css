@@ -11,12 +11,14 @@
     cursor: pointer;
     transition-duration: 0.6s;
     flex: 1 1 350px;
+    opacity: 0.7;
 }
 
 .blog-topic-card:hover{
     filter: drop-shadow(0px 0px 4px purple);
     border: 2px solid purple;
     transform: translateY(-10px);
+    opacity: 1;
 }
 
 .blog-topic-card img{

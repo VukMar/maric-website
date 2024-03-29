@@ -11,6 +11,7 @@
     background-size: 25%;
 }
 
+
 .home-content{
     overflow: hidden;
     width: 90%;
@@ -27,6 +28,30 @@
     text-align: center;
 }
 
+.home-heading-container{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home-avatar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    width: 90%;
+    max-width: 280px;
+    height: 280px;
+    transition-duration: 2s;
+    overflow: hidden;
+    filter: drop-shadow(0px 0px 4px white);
+    border-radius: 50% 70% 50% 90%;
+}
+
 .hello{
     box-sizing: border-box;
     width: 95%;
@@ -40,8 +65,6 @@
     text-align: center;
     padding: 10px;
     padding-top: 20px;
-    border: 2px solid purple;
-    border-radius: 0px 0px 20px 20px;
 
 }
 
@@ -138,7 +161,6 @@
 .glimpse-div{
     box-sizing: border-box;
     padding: 10px 10px 30px 10px;
-    gap: 10px;
     justify-content: center;
     align-items: stretch;
     width: 100%;
@@ -161,10 +183,13 @@
     text-decoration: none;
     color: white;
     border-right: 2px solid purple;
+    border-left: 2px solid purple;
+    transition-duration: 0.5s;
 }
 
-.home-glimpse:last-child{
-    border: none;
+.home-glimpse:hover{
+    backdrop-filter: blur(4px);
+    filter: drop-shadow(0px 0px 4px white)
 }
 
 .home-glimpse p{

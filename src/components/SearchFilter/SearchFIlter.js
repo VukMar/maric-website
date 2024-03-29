@@ -4,10 +4,14 @@ import "./SearchFilter.css";
 
 import {sortByDate,sortByViews} from '../../logic/sorting';
 
+import { useFilterInitiated } from './FilterInitiatedProvider';
+
 function SearchFilter ({content, setFilteredContent, SortOrder}) {
 
+	const { setFilterInitiated } = useFilterInitiated();
+
 	const [KeywordSelected, setSelectedKeyword] = useState('');
-	const [FilterText, setFIlterText] = useState('');
+	const [FilterText, setFilterText] = useState('');
 	const [Keywords, setKeywords] = useState([]);
 
 	useEffect(() => {
@@ -38,64 +42,69 @@ function SearchFilter ({content, setFilteredContent, SortOrder}) {
 		if(value !== null && value !== undefined){
             setSelectedKeyword(value);
 			if(value && value.length >= 3){
+				setFilterInitiated(true);
 				content.forEach(el => {
-					if(AincludesB(el.title, value) || tagsMatch(el.tags, value)){
+					if(ArrayIncludesKeyword(sentenceToLowerArray(el.title), value) || ArrayIncludesKeyword(el.tags, value)){
 						filtered.push(el);
 					}
 				})
 			}
 			else{
+				setFilterInitiated(false);
 				filtered = content;
 			}
 		}else{
+			setFilterInitiated(false);
 			filtered = content;
 		}
+		console.log(filtered)
         if(SortOrder !== null){
-            setFilteredContent(updateTopicOrder(filtered));
+            setFilteredContent(updateOrder(filtered));
         }else{
             setFilteredContent(filtered)
         }
-		setFIlterText(value);
+		setFilterText(value);
 	}
 
-    function updateTopicOrder(content){
+    function updateOrder(List){
 		switch(SortOrder){
 			case 'date-from-oldest':
-				return sortByDate(content);
+				return sortByDate(List);
 				break;
 			case 'date-from-latest':
-				return sortByDate(content);
+				return sortByDate(List);
 				break;
 			case 'views-from-lowest':
-				return sortByViews(content);
+				return sortByViews(List);
 				break;
 			case 'views-from-highest':
-				return sortByViews(content);
+				return sortByViews(List);
 				break;
 		}
 	}
 
-    const tagsMatch = (tags, keyword) => {
-        if(tags !== null && tags !== undefined){
-            const tagsArray = Array.isArray(tags) ? tags : Object.values(tags);
-            tagsArray.forEach(tag => {
-                return wordsMatch(tag, keyword);
-            });
-        }
+	function sentenceToLowerArray(sentence) {
+		// Convert the sentence to lowercase
+		const lowerCaseSentence = sentence.toLowerCase();
+		
+		// Split the lowercase sentence into an array of words
+		const wordsArray = lowerCaseSentence.split(/\s+/);
+		
+		return wordsArray;
 	}
 
-	const wordsMatch = (a, b) => {
-		const cleanA = a.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
-		const cleanB = b.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
-		return cleanA === cleanB;
+	function ArrayIncludesKeyword(arr, keyword) {
+		return arr.some(el => wordsMatch(keyword, el));
 	}
-	function AincludesB(a, b) {
-		// Remove spaces, punctuation, and symbols from both strings and convert them to lowercase
-		const cleanA = a.replace(/[.,\/#!$%\^&\*;:{}=\-_`~() ]/g, '').toLowerCase();
-		const cleanB = b.replace(/[.,\/#!$%\^&\*;:{}=\-_`~() ]/g, '').toLowerCase();
-	  
-		// Check if cleanB includes cleanA
-		return cleanA.includes(cleanB);
+
+	function wordsMatch(KeywordSelected, word) {
+		if(KeywordSelected.length < 3){
+			return false;
+		}
+		const keywordLowerCase = KeywordSelected.toLowerCase();
+		const wordLowerCase = word.toLowerCase();
+	
+		return wordLowerCase.includes(keywordLowerCase);
 	}
 
     return(
