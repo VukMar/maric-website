@@ -52,12 +52,10 @@ const NavBar = () =>{
     };
 
     useEffect(() => {
-        if(navRef !== null){
-            if(navRef.current !== null || navRef.current !== undefined){
-                navRef.current.style.width = expanded? `90%` : '0px';
-                navRef.current.style.opacity = expanded? 1 : 0;
-
-            }
+        if(navRef?.current){
+            navRef.current.style.width = expanded? `90%` : '0px';
+            navRef.current.style.opacity = expanded? 1 : 0;
+            navRef.current.style.pointerEvents = expanded? 'all' : 'none';
         }
     },[expanded])
 
