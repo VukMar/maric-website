@@ -1,5 +1,5 @@
 // src/HelloPageOne.js
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect } from 'react';
 
 import './AboutMe.css';
@@ -7,6 +7,7 @@ import './AboutMe.css';
 import PlanetSVG from '../Resources/Planet.svg';
 import { DisplayCert } from '../components/CertDisplay';
 import SkillList from '../components/SkillList/SkillList';
+import BackgroundCnavas from '../components/BackgroundCanvas/BackgroundCanvas';
 
 export const AboutMe = ({listItemData}) => {
 	
@@ -14,6 +15,8 @@ export const AboutMe = ({listItemData}) => {
 
 	const [value, setValue] = React.useState(null);
 	const [certificateImages, setCertificateImages] = React.useState([]);
+
+	const pageRef = useRef(null);
 	
 	useEffect(() =>{
 		certChange('HTML');
@@ -43,17 +46,18 @@ export const AboutMe = ({listItemData}) => {
 		  	setCertificateImages([]);
 		});
 	};
-
 	
 
 	return (
 		<div className='AboutMe'>
 			<div className='info'>
-				<div className='avatarSec'>
+				<div className='avatarSec' ref={pageRef}>
+					<BackgroundCnavas page={pageRef} items={listItemData}/>
 					<img id='Avatar' src='https://avatars.githubusercontent.com/u/94225856?v=4' alt='avatar'/>
 					<SkillList items={listItemData} text={"SKILLS"}/>
 					<img className='stats' src='https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=VukMar&theme=dark' alt='stats-github'></img>
 				</div>
+				<div className='about-divider'></div>
 				<div className='mainInfo'>
 					<div className='bio-sec'>
 						<p>
