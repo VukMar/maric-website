@@ -12,7 +12,7 @@ const BlogTopicCard = ({topic,id}) => {
         let data = new FormData();
         data.append('id', topic.id)
 
-        const response = await fetch('https://backend.vukmaric.rs/api/blog/updateViews.php', {
+        const response = await fetch('https://vukmaric.com/backend/api/blog/updateViews.php', {
             method: 'POST', 
             body: data
         });

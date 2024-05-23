@@ -49,7 +49,6 @@
     box-sizing: border-box;
     object-fit: cover;
     width: 60%;
-    align-self: center;
     justify-self: center;
 }
 @media (max-width: 699px) {

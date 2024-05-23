@@ -45,7 +45,7 @@ const ContactMe = React.forwardRef((props, ref) => {
 			data.append('email', UserInfo.email);
 
 			try {
-				const response = await fetch('https://backend.vukmaric.rs/api/email/SendEmail.php', {
+				const response = await fetch('https://vukmaric.com/backend/api/email/SendEmail.php', {
 				method: 'POST',
 				body: data,
 				});
