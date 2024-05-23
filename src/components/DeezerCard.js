@@ -7,7 +7,7 @@ function DeezerCard() {
 
     //Gets data from a backend that has last played track from deezer
     const fetchTrackData = () => {
-        const apiUrl = 'https://backend.vukmaric.rs/api/deezer/get_track.php';
+        const apiUrl = 'https://vukmaric.com/backend/api/deezer/get_track.php';
 
         fetch(apiUrl)
             .then((response) => {

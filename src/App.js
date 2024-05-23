@@ -61,7 +61,7 @@ function App(){
 
 
 	const fetchTopics = async () => {
-		const response = await fetch('https://backend.vukmaric.rs/api/blog/GetBlogTopics.php')
+		const response = await fetch('https://vukmaric.com/backend/api/blog/GetBlogTopics.php')
 		if (!response.ok) {
 			throw new Error(`Failed to fetch topics. Status: ${response.status}`);
 		}

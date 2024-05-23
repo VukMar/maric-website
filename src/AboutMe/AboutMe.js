@@ -11,7 +11,7 @@ import BackgroundCnavas from '../components/BackgroundCanvas/BackgroundCanvas';
 
 export const AboutMe = ({listItemData}) => {
 	
-	const backend = 'https://backend.vukmaric.rs/api/certificates/'
+	const backend = 'https://vukmaric.com/backend/api/certificates/'
 
 	const [value, setValue] = React.useState(null);
 	const [certificateImages, setCertificateImages] = React.useState([]);

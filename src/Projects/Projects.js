@@ -22,7 +22,7 @@ const Projects = () => {
 
     const getProjects = async () => {
         try {
-            const response = await fetch("https://backend.vukmaric.rs/api/projects/getProjects.php");
+            const response = await fetch("https://vukmaric.com/backend/api/projects/getProjects.php");
             
             if (!response.ok) {
                 throw new Error('Network response was not ok');
